@@ -1,33 +1,38 @@
 package br.com.caelum.stella.inwords;
 
 public class DigitoDezena extends Digito {
+
+	public DigitoDezena(long numero, double posicao, Digito digitoFilho) {
+		super(numero, posicao, digitoFilho);
+	}
+
+	@Override
+	public String extenso()
+	{
+		if (entreZeroeNove()) {
+			return digitoFilho.extenso();
+		}
+		else if (entreDezEDezenove()) {
+			return extenso(valorSomenteDoDigito() + digitoFilho.numero);
+		}
+		else {
+			if (multiploDeDez())
+				return extenso(valorSomenteDoDigito());
+			else
+				return String.format("%s e %s", extenso(), digitoFilho.extenso());
+		}
+	}
 	
-    private bool MultiploDe10 => digitoFilho.Numero == 0;
-    private bool Entre10e19 => Numero == 1;
-    private bool Entre0e9 => Numero == 0;
-
-    public DigitoDezena(long numero, double posicao, Digito digitoFilho) : base(numero, posicao, digitoFilho) { }
-
-    public override string Extenso()
-    {
-        if (Entre0e9)
-        {
-            return digitoFilho.Extenso();
-        }
-        else if (Entre10e19)
-        {
-            return base.Extenso(ValorSomenteDoDigito() + digitoFilho.Numero);
-        }
-        else
-        {
-            if (MultiploDe10)
-                return base.Extenso(ValorSomenteDoDigito());
-            else
-                return
-                    string.Format("{0} e {1}"
-                    , base.Extenso()
-                    , digitoFilho.Extenso());
-        }
-    }
+	private boolean entreZeroeNove() {
+		return this.numero == 0;
+	}
+	
+	private boolean entreDezEDezenove() {
+		return this.numero == 1;
+	}
+	
+	private boolean multiploDeDez() {
+		return this.digitoFilho.numero == 0;
+	}
 }
 

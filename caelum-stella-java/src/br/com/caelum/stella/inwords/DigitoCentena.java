@@ -1,27 +1,28 @@
 package br.com.caelum.stella.inwords;
 
-public class DigitoCentena extends Digito
-{
-    private boolean MultiploDe100 => ValorDosFilhos() == 0;
+public class DigitoCentena extends Digito {
 
-    public DigitoCentena(long numero, double posicao, Digito digitoFilho) : base(numero, posicao, digitoFilho) { }
+    public DigitoCentena(long numero, double posicao, Digito digitoFilho) { 
+    		super(numero, posicao, digitoFilho);
+    }
 
     @Override
-    public String Extenso() {
-        if (MultiploDe100)
-            return base.Extenso(ValorSomenteDoDigito());
+    public String extenso() {
+        if (multiplodeCem())
+            return extenso(valorSomenteDoDigito());
         else
         {
             String esteDigitoExtenso = "";
-            if (Numero == 1)
-                esteDigitoExtenso = ResourceManagerHelper.Instance.ResourceManager.GetString("Extenso100mais");
+            if (numero == 1)
+                esteDigitoExtenso = "";//ResourceManagerHelper.Instance.ResourceManager.GetString("Extenso100mais");
             else
-                esteDigitoExtenso = base.Extenso();
+                esteDigitoExtenso = super.extenso();
 
-            return
-                String.Format("{0} e {1}"
-                , esteDigitoExtenso
-                , digitoFilho.Extenso());
+            return String.format("%s e %s", esteDigitoExtenso, digitoFilho.extenso());
         }
+    }
+    
+    private boolean multiplodeCem() {
+    		return ValorDosFilhos() == 0;
     }
 }

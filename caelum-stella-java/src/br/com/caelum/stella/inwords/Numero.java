@@ -5,7 +5,7 @@ package br.com.caelum.stella.inwords;
  * @author caelum
  *
  */
-public abstract class Numero {
+public class Numero {
 	
 	protected double numeroOrigem;
 	

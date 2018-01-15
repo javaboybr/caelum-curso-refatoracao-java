@@ -8,8 +8,6 @@ public class GrupoDe3Digitos
     private final Digito digito;
     private final GrupoDe3Digitos grupoFilho;
 
-    //public double Posicao => posicao;
-
     public GrupoDe3Digitos(long numero, double posicao, GrupoDe3Digitos grupoFilho) {
         if (numero < 0) {
             throw new IllegalArgumentException(NUMERO_NEGATIVO);
@@ -41,7 +39,7 @@ public class GrupoDe3Digitos
     }
 
     protected double valorSomenteDoGrupo() {
-        return digito.ValorTotal();
+        return digito.valorTotal();
     }
 
     protected double ValorDosFilhos() {
@@ -72,50 +70,40 @@ public class GrupoDe3Digitos
 
     public String extenso() {
         if (grupoFilho == null)
-            return digito.Extenso();
+            return digito.extenso();
         else if (valorSomenteDoGrupo() == 0) {
             return grupoFilho.extenso();
         }
         else {
-            double valorGrupo = digito.ValorTotal();
+            double valorGrupo = digito.valorTotal();
             String singularPlural = valorGrupo < 2 ? "singular" : "plural";
-            String nomeGrupo =
-                ResourceManagerHelper
+            String nomeGrupo = "";
+                /*ResourceManagerHelper
                     .Instance
                     .ResourceManager
-                    .GetString(String.Format("Extenso1e{0}{1}", (posicao - 1) * 3, singularPlural));
+                    .GetString(String.Format("Extenso1e{0}{1}", (posicao - 1) * 3, singularPlural));*/
 
             double valorGrupoFilho = grupoFilho.ValorTotal();
 
-            if (valorGrupoFilho == 0)
-            {
-                return String.Format("{0} {1}",
-                digito.Extenso(),
-                nomeGrupo);
+            if (valorGrupoFilho == 0) {
+                return String.format("%s %s", digito.extenso(), nomeGrupo);
             }
-            else
-            {
+            else {
                 GrupoDe3Digitos proximoGrupoComValor = grupoFilho.PrimeiroGrupoComValor();
                 String separador = "";
 
-                if (proximoGrupoComValor.posicao == 1)
-                {
+                if (proximoGrupoComValor.posicao == 1) {
                     if (posicao == 2
                         && proximoGrupoComValor.numero >= 100 && proximoGrupoComValor.numero >= 10)
                         separador = "";
                     else
                         separador = " e";
                 }
-                else
-                {
+                else {
                     separador = ",";
                 }
 
-                return String.Format("{0} {1}{2} {3}",
-                digito.Extenso(),
-                nomeGrupo,
-                separador,
-                grupoFilho.extenso());
+                return String.format("%s %s%s %s", digito.extenso(), nomeGrupo, separador, grupoFilho.extenso());
             }
         }
     }

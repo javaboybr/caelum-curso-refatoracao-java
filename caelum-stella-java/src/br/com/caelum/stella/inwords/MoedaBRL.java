@@ -1,12 +1,18 @@
 package br.com.caelum.stella.inwords;
 
 public class MoedaBRL extends Moeda {
-	
-   
-        protected override string MoedaSingular { get => ResourceManagerHelper.Instance.ResourceManager.GetString("MoedaBRLSingular"); }
-        protected override string MoedaPlural { get => ResourceManagerHelper.Instance.ResourceManager.GetString("MoedaBRLPlural"); }
 
-        public MoedaBRL(double numero) /*: base(numero)*/ {
-        		super(numero);
-        }
+	public MoedaBRL(double numero) {
+		super(numero);
+	}
+
+	@Override
+	protected String moedaNoPlural() {
+		return ""; //ResourceManagerHelper.Instance.ResourceManager.GetString("MoedaBRLPlural");
+	}
+
+	@Override
+	protected String moedaNoSingular() {
+		return ""; //ResourceManagerHelper.Instance.ResourceManager.GetString("MoedaBRLSingular");
+	}
 }
