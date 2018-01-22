@@ -14,29 +14,8 @@ public abstract class Moeda extends Numero
 	@Override
 	public String extenso() {
 		StringBuilder builder = new StringBuilder();
-		MontarInteiros(builder);
-		MontarCentavos(builder);
-		return builder.toString();
-	}
-
-	private void MontarCentavos(StringBuilder builder) {
-		double centavos = Math.round((numeroOrigem - truncarNumeroOrigem()) * 100);
-		if (centavos > 0)
-		{
-			if (numeroOrigem >= 1.0)
-				builder.append(""/*ResourceManagerHelper.Instance.ResourceManager.GetString("Extensosep")*/);
-
-			BuildNumeroCentavos(centavos, builder);
-			builder.append(" ");
-			BuildPalavraCentavos(centavos, builder);
-		}
-	}
-
-	private int truncarNumeroOrigem() {
-		return (int)numeroOrigem;
-	}
-
-	private void MontarInteiros(StringBuilder builder) {
+		
+		// monta os inteiros
 		if (numeroOrigem < 0) {
 			throw new IllegalArgumentException();
 		}
@@ -45,6 +24,23 @@ public abstract class Moeda extends Numero
 			BuildPreposicaoMilhoes(numeroOrigem, builder);
 			BuildPalavraMoeda(numeroOrigem, builder);
 		}
+		
+		// monta os centavos
+		double centavos = Math.round((numeroOrigem - truncarNumeroOrigem()) * 100);
+		if (centavos > 0)
+		{
+			if (numeroOrigem >= 1.0)
+				builder.append(""/*ResourceManagerHelper.Instance.ResourceManager.GetString("Extensosep")*/);
+		
+			BuildNumeroCentavos(centavos, builder);
+			builder.append(" ");
+			BuildPalavraCentavos(centavos, builder);
+		}
+		return builder.toString();
+	}
+
+	private int truncarNumeroOrigem() {
+		return (int)numeroOrigem;
 	}
 
 	protected void BuildPreposicaoMilhoes(double numeroOrigem, StringBuilder builder)
