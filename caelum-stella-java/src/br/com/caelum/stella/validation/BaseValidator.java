@@ -44,11 +44,9 @@ public abstract class BaseValidator {
 
 				String documentSubstring = unformattedDocument.substring(0, getDocumentLength() - 2);
 
-				String digito1 = getDigitoVerificador(documentSubstring).toString();
-				String digito2 = getDigitoVerificador(documentSubstring + digito1).toString();
 				if (unformattedDocument != documentSubstring 
-						+ digito1
-						+ digito2)
+						+ getDigitoVerificador(documentSubstring).toString()
+						+ getDigitoVerificador(documentSubstring + getDigitoVerificador(documentSubstring).toString()).toString())
 					errors.add(DocumentError.INVALID_CHECK_DIGITS.toString());
 			}
 
