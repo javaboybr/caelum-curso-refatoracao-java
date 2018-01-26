@@ -11,8 +11,9 @@ public class CEP {
 	private final String cepAsString;
 	
 	public CEP(String cepAsString) {
+		String unformattedCEP = cepAsString.replace("-", "");
 		if(cepAsString == null) this.cepAsString = null;
-		else if(matches(getRegexFormatted(), cepAsString)) this.cepAsString = unformatCEP(cepAsString);
+		else if(matches(getRegexFormatted(), cepAsString)) this.cepAsString = unformattedCEP;
 		else if(matches(getRegexUnformatted(), cepAsString)) this.cepAsString = cepAsString;
 		else throw new InvalidZipCodeFormatException();
 	}
@@ -23,10 +24,6 @@ public class CEP {
 	
 	private static String getRegexUnformatted() {
 		return DocumentFormats.CEP_DIGITS_ONLY.toString();
-	}
-	
-	private static String unformatCEP(String cepAsString) {
-		return cepAsString.replace("-", "");
 	}
 	
 	@Override
