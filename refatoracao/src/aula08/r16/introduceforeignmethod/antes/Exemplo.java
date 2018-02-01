@@ -7,10 +7,6 @@ public class Exemplo {
 	
 	public Exemplo() {
 		LocalDateTime data = LocalDateTime.now();
-		LocalDate ultimoDiaDoMes = getUltimoDiaDoMes(data);
-	}
-
-	private LocalDate getUltimoDiaDoMes(LocalDateTime data) {
-		return LocalDate.of(data.getYear(), data.getMonth(), data.getMonth().maxLength());
+		LocalDate ultimoDiaDoMes = LocalDate.of(data.getYear(), data.getMonth(), data.getMonth().maxLength());
 	}
 }
