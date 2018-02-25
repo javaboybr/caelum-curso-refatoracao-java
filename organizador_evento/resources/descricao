@@ -1,0 +1,9 @@
+Esta ferramenta tem por objetivo auxiliar a organização de um evento (fictício) da caelum, que contará com diversas palestras.
+Ele será de 1 dia, e contará com duas trilhas. A partir do tempo de cada palestra, o sistema deverá gerar a agenda com a trilha e o horário de cada uma das palestras.
+É necessário também incluir 1 hora de almoço ao meio dia. 
+Serão 4 sessões: duas de manhã e duas a tarde. As sessões da manhã terão 3 horas de duração, e as da tarde, 4 horas, mais uma hora para networking no final.
+
+A entrada do programa é um arquivo com os nomes das palestras e o tempo de cada uma. A saída deve conter as palestras organizadas por trilha, bem como seu horário
+de início.
+
+A palestra "lighting" é uma conversa rápida de 5 minutos.
