@@ -11,8 +11,8 @@ import java.util.List;
 import org.junit.Test;
 
 import br.com.caelum.eventos.dominio.Agenda;
+import br.com.caelum.eventos.dominio.Atividade;
 import br.com.caelum.eventos.dominio.ListaDePalestras;
-import br.com.caelum.eventos.dominio.Palestra;
 import br.com.caelum.eventos.dominio.Trilha;
 
 public class AgendaTest {
@@ -21,15 +21,15 @@ public class AgendaTest {
 	public void testarElaboracaoDeConferencias(){
 		ListaDePalestras palestras = ContextoPalestras.palestras();
 		
-		Agenda agenda = new Agenda();
-		List<Trilha> trilhas = agenda.prepararTrilhas(palestras);
+		Agenda agenda = new Agenda(palestras);
+		List<Trilha> trilhas = agenda.prepararTrilhas();
 		
 		assertTrue(palestras.estaVazia());
-		List<Palestra> palestrasAgendadasTrilha1 = trilhas.get(0).lerPalestrasAgendadasEmOrdem();
-		List<Palestra> palestrasAgendadasTrilha2 = trilhas.get(1).lerPalestrasAgendadasEmOrdem();
+		List<Atividade> eventosAgendadosTrilha1 = trilhas.get(0).lerAtividadesAgendadasEmOrdem();
+		List<Atividade> eventosAgendadosTrilha2 = trilhas.get(1).lerAtividadesAgendadasEmOrdem();
 		int quantidadeDeAlmocosENetworking = 4;
 		
-		assertThat(palestrasAgendadasTrilha1.size() + palestrasAgendadasTrilha2.size(), is(equalTo(totalDePalestras() + quantidadeDeAlmocosENetworking)));
+		assertThat(eventosAgendadosTrilha1.size() + eventosAgendadosTrilha2.size(), is(equalTo(totalDePalestras() + quantidadeDeAlmocosENetworking)));
 		
 	}
 }

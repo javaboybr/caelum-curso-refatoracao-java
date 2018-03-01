@@ -7,6 +7,7 @@ import java.util.Scanner;
 import java.util.Set;
 
 import br.com.caelum.eventos.dominio.Agenda;
+import br.com.caelum.eventos.dominio.Atividade;
 import br.com.caelum.eventos.dominio.ListaDePalestras;
 import br.com.caelum.eventos.dominio.Palestra;
 import br.com.caelum.eventos.dominio.Trilha;
@@ -24,13 +25,13 @@ public class Main {
 		LeitorDePalestras leitor = new LeitorDePalestras(arquivoDePalestras);
 		Set<Palestra> palestras = leitor.lerPalestras();
 		
-		Agenda agenda = new Agenda();
-		List<Trilha> trilhas = agenda.prepararTrilhas(new ListaDePalestras(palestras));
+		Agenda agenda = new Agenda(new ListaDePalestras(palestras));
+		List<Trilha> trilhas = agenda.prepararTrilhas();
 		
 		for(Trilha trilha : trilhas){
 			System.out.println(trilha.nome() + ":");
-			for(Palestra p : trilha.lerPalestrasAgendadasEmOrdem()){
-				System.out.println(p);
+			for(Atividade e : trilha.lerAtividadesAgendadasEmOrdem()){
+				System.out.println(e);
 			}
 			System.out.println();
 		}

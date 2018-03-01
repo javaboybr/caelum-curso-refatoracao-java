@@ -6,7 +6,13 @@ import java.util.List;
 
 public class Agenda {
 
-	public List<Trilha> prepararTrilhas(ListaDePalestras listaDePalestras) {
+	private final ListaDePalestras listaDePalestras;
+	
+	public Agenda(ListaDePalestras palestras){
+		this.listaDePalestras = palestras;
+	}
+	
+	public List<Trilha> prepararTrilhas() {
 		SessaoDaManha umaSessaoDaManha = new SessaoDaManha();
 		SessaoDaManha outraSessaoDaManha = new SessaoDaManha();
 		
@@ -37,7 +43,7 @@ public class Agenda {
 	
 	private boolean adicionarPalestras(Sessao sessao, ListaDePalestras listaDePalestras){
 		boolean adicionou = true;
-		while(adicionou == true && !listaDePalestras.estaVazia()){
+		while(adicionou && !listaDePalestras.estaVazia()){
 			Palestra novaPalestra = listaDePalestras.obterProxima();
 			adicionou = sessao.adicionar(novaPalestra);
 			if(!adicionou){

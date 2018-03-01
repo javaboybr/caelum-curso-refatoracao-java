@@ -29,6 +29,10 @@ public class ListaDePalestras {
 	}
 
 	public void devolver(Palestra devolvida) {
+		devolverSePossivel(devolvida);
+	}
+
+	private void devolverSePossivel(Palestra devolvida) {
 		if(!palestras.contains(devolvida)){
 			palestras.add(devolvida);
 		}
@@ -36,7 +40,7 @@ public class ListaDePalestras {
 	
 	public void devolver(List<Palestra> devolvidas){
 		for(Palestra devolvida : devolvidas){
-			devolver(devolvida);
+			devolverSePossivel(devolvida);
 		}
 	}
 
