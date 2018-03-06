@@ -33,10 +33,9 @@ public class Trilha {
 	private void agendarPalestrasDa(Sessao sessao) { 
 		LocalTime horarioCalculado = sessao.comecaAs();
 		for(Palestra palestra : sessao){
-			LocalTime horario = horarioCalculado;
-			palestra.agendarPara(horario);
+			palestra.agendarPara(horarioCalculado);
 			atividadesAgendadas.add(palestra);
-			horarioCalculado = horario.plusMinutes(palestra.lerTempoDeDuracao().toInt());
+			horarioCalculado = horarioCalculado.plusMinutes(palestra.lerTempoDeDuracao().toInt());
 		}
 	}
 
