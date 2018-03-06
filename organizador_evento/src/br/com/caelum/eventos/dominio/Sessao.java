@@ -1,37 +1,30 @@
 package br.com.caelum.eventos.dominio;
 
 import java.time.LocalTime;
-import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.Iterator;
-import java.util.List;
-import java.util.Set;
 
 public abstract class Sessao implements Iterable<Palestra>{
 	
-	private final Set<Palestra> palestras;
+	private final ListaDePalestras palestras;
 	private TempoDeDuracao tempoDeDuracaoDasPalestras;
 	
 	protected Sessao(){
-		this.palestras = new HashSet<>();
+		this.palestras = new ListaDePalestras();
 		this.tempoDeDuracaoDasPalestras = new TempoDeDuracao(0);
 	}
 	
 	public boolean adicionar(Palestra novaPalestra) {
 		boolean ret = false;
 		if(podeAdicionar(novaPalestra)){
-			ret = palestras.add(novaPalestra);
+			ret = palestras.adicionar(novaPalestra);
 			tempoDeDuracaoDasPalestras = tempoDeDuracaoDasPalestras.mais(novaPalestra.lerTempoDeDuracao());
 		}
 		return ret;
 	}
 	
-	public List<Palestra> cancelar() {
-		List<Palestra> ret = new ArrayList<>();
-		ret.addAll(palestras);
-		palestras.clear();
+	public ListaDePalestras cancelar() {
 		tempoDeDuracaoDasPalestras = new TempoDeDuracao(0);
-		return ret;
+		return palestras.removerTodas();
 	}
 	
 	private boolean podeAdicionar(Palestra novaPalestra){

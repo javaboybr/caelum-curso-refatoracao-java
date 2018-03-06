@@ -10,11 +10,11 @@ import java.util.List;
 
 public class Trilha {
 	
-	private final int numero;
+	private final String nome;
 	private final List<Atividade> atividadesAgendadas;
 	
-	public Trilha(SessaoDaManha sessaoDaManha, SessaoDaTarde sessaoDaTarde, int numero){
-		this.numero = numero;
+	public Trilha(String nome, SessaoDaManha sessaoDaManha, SessaoDaTarde sessaoDaTarde){
+		this.nome = nome;
 		atividadesAgendadas = new ArrayList<>();
 		agendarPalestrasDa(sessaoDaManha);
 		agendarAlmoco();
@@ -42,7 +42,7 @@ public class Trilha {
 	}
 
 	public String nome(){
-		return "Trilha " + numero;
+		return "Trilha " + nome;
 	}
 
 	public List<Atividade> lerAtividadesAgendadasEmOrdem() {

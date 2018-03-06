@@ -13,6 +13,8 @@ public class Agenda {
 	}
 	
 	public List<Trilha> prepararTrilhas() {
+		final String nomeDaTrilha1 = "PaPo ReTo";
+		final String nomeDaTrilha2 = "DiGiTal";
 		SessaoDaManha umaSessaoDaManha = new SessaoDaManha();
 		SessaoDaManha outraSessaoDaManha = new SessaoDaManha();
 		
@@ -25,8 +27,8 @@ public class Agenda {
 		adicionarPalestrasSePossivel(umaSessaoDaTarde, listaDePalestras);
 		adicionarPalestrasSePossivel(outraSessaoDaTarde, listaDePalestras);
 		
-		return asList(new Trilha(umaSessaoDaManha, umaSessaoDaTarde, 1), 
-				new Trilha(outraSessaoDaManha, outraSessaoDaTarde, 2));
+		return asList(new Trilha(nomeDaTrilha1, umaSessaoDaManha, umaSessaoDaTarde), 
+				new Trilha(nomeDaTrilha2, outraSessaoDaManha, outraSessaoDaTarde));
 	}
 	
 	private void adicionarPalestrasSePossivel(Sessao sessao, ListaDePalestras palestras){
@@ -34,7 +36,7 @@ public class Agenda {
 		while(!sessaoOk){
 			sessaoOk = adicionarPalestras(sessao, palestras);
 			if(!sessaoOk){
-				List<Palestra> palestrasCanceladas = sessao.cancelar();
+				ListaDePalestras palestrasCanceladas = sessao.cancelar();
 				palestras.devolver(palestrasCanceladas);
 				palestras.embaralhar();
 			}

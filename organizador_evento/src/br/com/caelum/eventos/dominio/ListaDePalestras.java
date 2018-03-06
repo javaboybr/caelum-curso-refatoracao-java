@@ -1,25 +1,25 @@
 package br.com.caelum.eventos.dominio;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Set;
 
-public class ListaDePalestras {
+public class ListaDePalestras implements Iterable<Palestra>{
 	
 	private final List<Palestra> palestras;
 	
-	public ListaDePalestras(Set<Palestra> palestras){
+	public ListaDePalestras(Collection<Palestra> palestras){
 		this.palestras = new ArrayList<>(palestras);
 	}
 	
+	public ListaDePalestras() {
+		this(new ArrayList<>());
+	}
+
 	public Palestra obterProxima(){
-		Palestra ret = null;
-		Iterator<Palestra> cursorPalestras = palestras.iterator();
-		while(cursorPalestras.hasNext()){
-			ret = cursorPalestras.next();
-		}
+		Palestra ret = palestras.stream().reduce((first, second) -> second).orElse(null);
 		palestras.remove(ret);
 		return ret;
 	}
@@ -38,7 +38,7 @@ public class ListaDePalestras {
 		}
 	}
 	
-	public void devolver(List<Palestra> devolvidas){
+	public void devolver(ListaDePalestras devolvidas){
 		for(Palestra devolvida : devolvidas){
 			devolverSePossivel(devolvida);
 		}
@@ -46,5 +46,20 @@ public class ListaDePalestras {
 
 	public void embaralhar() {
 		Collections.shuffle(palestras);
+	}
+
+	@Override
+	public Iterator<Palestra> iterator() {
+		return palestras.iterator();
+	}
+
+	public boolean adicionar(Palestra novaPalestra) {
+		return palestras.add(novaPalestra);
+	}
+
+	public ListaDePalestras removerTodas() {
+		ListaDePalestras ret = new ListaDePalestras(palestras);
+		palestras.clear();
+		return ret;
 	}
 }

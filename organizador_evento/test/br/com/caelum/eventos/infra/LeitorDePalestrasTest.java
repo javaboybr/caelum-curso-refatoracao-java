@@ -10,7 +10,6 @@ import java.util.Set;
 import org.junit.Test;
 
 import br.com.caelum.eventos.dominio.Palestra;
-import br.com.caelum.eventos.infra.LeitorDePalestras;
 
 public class LeitorDePalestrasTest {
 	
@@ -22,5 +21,11 @@ public class LeitorDePalestrasTest {
 		Set<Palestra> palestrasEsperadas = setPalestras();
 		
 		assertTrue(palestras.containsAll(palestrasEsperadas));
+	}
+	
+	@Test(expected=FileNotFoundException.class)
+	public void tentarLerArquivoDePalestrasInexistente() throws FileNotFoundException {
+		LeitorDePalestras leitor = new LeitorDePalestras(new File("arquivoInexistente"));
+		leitor.lerPalestras();
 	}
 }
