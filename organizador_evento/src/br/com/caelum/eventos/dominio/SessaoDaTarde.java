@@ -22,9 +22,4 @@ public class SessaoDaTarde extends Sessao {
 		return LocalTime.of(13, 0);
 	}
 
-	@Override
-	public LocalTime terminaAs() {
-		return LocalTime.of(17, 0);
-	}
-
 }

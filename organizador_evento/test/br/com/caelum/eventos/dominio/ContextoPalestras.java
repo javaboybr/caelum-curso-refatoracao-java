@@ -1,4 +1,4 @@
-package br.com.caelum.eventos;
+package br.com.caelum.eventos.dominio;
 
 import java.util.HashSet;
 import java.util.Set;

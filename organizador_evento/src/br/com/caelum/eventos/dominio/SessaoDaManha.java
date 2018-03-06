@@ -21,9 +21,4 @@ public class SessaoDaManha extends Sessao{
 	public LocalTime comecaAs(){
 		return LocalTime.of(9, 0);
 	}
-	
-	@Override
-	public LocalTime terminaAs(){
-		return LocalTime.of(12, 0);
-	}
 }

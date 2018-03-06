@@ -8,6 +8,7 @@ import java.util.HashSet;
 import java.util.Scanner;
 import java.util.Set;
 
+import br.com.caelum.eventos.dominio.ListaDePalestras;
 import br.com.caelum.eventos.dominio.Palestra;
 import br.com.caelum.eventos.dominio.TempoDeDuracao;
 
@@ -19,7 +20,7 @@ public class LeitorDePalestras {
 		this.arquivoDePalestras = arquivoDePalestras;
 	}
 
-	public Set<Palestra> lerPalestras() throws FileNotFoundException {
+	public ListaDePalestras lerPalestras() throws FileNotFoundException {
 		Set<Palestra> ret = new HashSet<>();
 		try(Scanner scanner = new Scanner(arquivoDePalestras)){
 			while(scanner.hasNextLine()){
@@ -28,7 +29,7 @@ public class LeitorDePalestras {
 				ret.add(palestra);
 			}
 		}
-		return ret;
+		return new ListaDePalestras(ret);
 	}
 	
 	private Palestra lerPalestra(String linha){

@@ -1,6 +1,6 @@
-package br.com.caelum.eventos;
+package br.com.caelum.eventos.dominio;
 
-import static br.com.caelum.eventos.ContextoPalestras.totalDePalestras;
+import static br.com.caelum.eventos.dominio.ContextoPalestras.totalDePalestras;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;

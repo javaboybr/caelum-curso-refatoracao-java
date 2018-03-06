@@ -4,12 +4,10 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.List;
 import java.util.Scanner;
-import java.util.Set;
 
 import br.com.caelum.eventos.dominio.Agenda;
 import br.com.caelum.eventos.dominio.Atividade;
 import br.com.caelum.eventos.dominio.ListaDePalestras;
-import br.com.caelum.eventos.dominio.Palestra;
 import br.com.caelum.eventos.dominio.Trilha;
 import br.com.caelum.eventos.infra.LeitorDePalestras;
 
@@ -23,9 +21,9 @@ public class Main {
 		s.close();
 		
 		LeitorDePalestras leitor = new LeitorDePalestras(arquivoDePalestras);
-		Set<Palestra> palestras = leitor.lerPalestras();
+		ListaDePalestras palestras = leitor.lerPalestras();
 		
-		Agenda agenda = new Agenda(new ListaDePalestras(palestras));
+		Agenda agenda = new Agenda(palestras);
 		List<Trilha> trilhas = agenda.prepararTrilhas();
 		
 		for(Trilha trilha : trilhas){

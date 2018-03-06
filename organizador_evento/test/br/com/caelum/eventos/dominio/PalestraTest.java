@@ -1,4 +1,4 @@
-package br.com.caelum.eventos;
+package br.com.caelum.eventos.dominio;
 
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.is;

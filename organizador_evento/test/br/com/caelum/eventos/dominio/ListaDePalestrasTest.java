@@ -1,4 +1,4 @@
-package br.com.caelum.eventos;
+package br.com.caelum.eventos.dominio;
 
 import static br.com.caelum.eventos.dominio.TempoDeDuracao.LIGHTING;
 import static org.hamcrest.CoreMatchers.equalTo;
