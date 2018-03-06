@@ -17,8 +17,8 @@ public class TempoDeDuracao implements Comparable<TempoDeDuracao>{
 		this.tempoEmMinutos = tempoEmMinutos;
 	}
 
-	public TempoDeDuracao mais(int parcela) {
-		return new TempoDeDuracao(tempoEmMinutos + parcela);
+	public TempoDeDuracao mais(int minutos) {
+		return new TempoDeDuracao(tempoEmMinutos + minutos);
 	}
 	
 	public TempoDeDuracao mais(TempoDeDuracao parcela){

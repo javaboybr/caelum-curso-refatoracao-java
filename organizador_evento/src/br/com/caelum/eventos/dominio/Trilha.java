@@ -30,11 +30,10 @@ public class Trilha {
 		atividadesAgendadas.add(ALMOCO);
 	}
 	
-	private void agendarPalestrasDa(Sessao sessao) {
-		LocalTime inicioDaSessao = sessao.comecaAs();
-		LocalTime horarioCalculado = null;
+	private void agendarPalestrasDa(Sessao sessao) { 
+		LocalTime horarioCalculado = sessao.comecaAs();
 		for(Palestra palestra : sessao){
-			LocalTime horario = horarioCalculado == null ? inicioDaSessao : horarioCalculado;
+			LocalTime horario = horarioCalculado;
 			palestra.agendarPara(horario);
 			atividadesAgendadas.add(palestra);
 			horarioCalculado = horario.plusMinutes(palestra.lerTempoDeDuracao().toInt());
