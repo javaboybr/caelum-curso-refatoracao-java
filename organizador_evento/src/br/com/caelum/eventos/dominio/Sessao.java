@@ -47,6 +47,4 @@ public abstract class Sessao implements Iterable<Palestra>{
 	public abstract TempoDeDuracao lerTempoDeDuracao();
 	public abstract boolean estaDevidamentePreenchida();
 	public abstract LocalTime comecaAs();
-	//public abstract LocalTime terminaAs();
-	
 }
