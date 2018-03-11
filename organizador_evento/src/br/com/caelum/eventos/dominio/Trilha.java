@@ -31,7 +31,9 @@ public class Trilha {
 		for(Palestra palestra : sessaoDaTarde){
 			palestra.agendarPara(horarioCalculado);
 			atividadesAgendadas.add(palestra);
-			horarioCalculado = horarioCalculado.plusMinutes(palestra.lerTempoDeDuracao().toInt());
+			// 4 - internalizar variável temporária
+			int tempoDeDuracaoEmMinutos = palestra.lerTempoDeDuracao().toInt();
+			horarioCalculado = horarioCalculado.plusMinutes(tempoDeDuracaoEmMinutos);
 		}
 		agendarNetworking();
 	}
