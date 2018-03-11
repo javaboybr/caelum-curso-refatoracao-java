@@ -16,9 +16,19 @@ public class Trilha {
 	public Trilha(String nome, SessaoDaManha sessaoDaManha, SessaoDaTarde sessaoDaTarde){
 		this.nome = nome;
 		atividadesAgendadas = new ArrayList<>();
-		agendarPalestrasDa(sessaoDaManha);
+		LocalTime horarioCalculado = sessaoDaManha.comecaAs();
+		for(Palestra palestra : sessaoDaManha){
+			palestra.agendarPara(horarioCalculado);
+			atividadesAgendadas.add(palestra);
+			horarioCalculado = horarioCalculado.plusMinutes(palestra.lerTempoDeDuracao().toInt());
+		}
 		agendarAlmoco();
-		agendarPalestrasDa(sessaoDaTarde);
+		horarioCalculado = sessaoDaTarde.comecaAs();
+		for(Palestra palestra : sessaoDaTarde){
+			palestra.agendarPara(horarioCalculado);
+			atividadesAgendadas.add(palestra);
+			horarioCalculado = horarioCalculado.plusMinutes(palestra.lerTempoDeDuracao().toInt());
+		}
 		agendarNetworking();
 	}
 	
@@ -30,15 +40,6 @@ public class Trilha {
 		atividadesAgendadas.add(ALMOCO);
 	}
 	
-	private void agendarPalestrasDa(Sessao sessao) { 
-		LocalTime horarioCalculado = sessao.comecaAs();
-		for(Palestra palestra : sessao){
-			palestra.agendarPara(horarioCalculado);
-			atividadesAgendadas.add(palestra);
-			horarioCalculado = horarioCalculado.plusMinutes(palestra.lerTempoDeDuracao().toInt());
-		}
-	}
-
 	public String nome(){
 		return "Trilha " + nome;
 	}
