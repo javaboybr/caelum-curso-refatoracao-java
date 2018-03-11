@@ -24,12 +24,17 @@ public class LeitorDePalestras {
 		Set<Palestra> ret = new HashSet<>();
 		try(Scanner scanner = new Scanner(arquivoDePalestras)){
 			while(scanner.hasNextLine()){
-				String linha = scanner.nextLine();
-				Palestra palestra = lerPalestra(linha);
+				Palestra palestra = lerPalestra(scanner);
 				ret.add(palestra);
 			}
 		}
 		return new ListaDePalestras(ret);
+	}
+
+	// 2 - exemplo de inline method 
+	private Palestra lerPalestra(Scanner scanner) {
+		String linha = scanner.nextLine();
+		return lerPalestra(linha);
 	}
 	
 	private Palestra lerPalestra(String linha){
