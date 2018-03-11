@@ -39,7 +39,10 @@ public class LeitorDePalestras {
 	
 	private Palestra lerPalestra(String linha){
 		int indiceDaDivisaoEntreNomeETempo = linha.lastIndexOf(' ');
+		
+		//5 - substituir variável temporária por consulta - criar método que retorne o nome da palestra
 		String nome = linha.substring(0, indiceDaDivisaoEntreNomeETempo);
+		//5 - substituir variável temporária por consulta - criar método que retorne o nome da palestra
 		String tempoString = linha.substring(indiceDaDivisaoEntreNomeETempo + 1, linha.length() - 3);
 		TempoDeDuracao duracao = LIGHTING_STRING.contains(tempoString) ? TempoDeDuracao.LIGHTING : new TempoDeDuracao(Integer.valueOf(tempoString));
 		
