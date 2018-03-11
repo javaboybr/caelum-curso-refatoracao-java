@@ -16,7 +16,7 @@ public class Trilha {
 	public Trilha(String nome, SessaoDaManha sessaoDaManha, SessaoDaTarde sessaoDaTarde){
 		this.nome = nome;
 		atividadesAgendadas = new ArrayList<>();
-		
+
 		//1 - exemplo de extract method
 		LocalTime horarioCalculado = sessaoDaManha.comecaAs();
 		for(Palestra palestra : sessaoDaManha){

@@ -21,7 +21,7 @@ public class Agenda {
 		
 		adicionarPalestrasSePossivel(umaSessaoDaManha, listaDePalestras);
 		adicionarPalestrasSePossivel(outraSessaoDaManha, listaDePalestras);
-		
+
 		adicionarPalestrasSePossivel(umaSessaoDaTarde, listaDePalestras);
 		adicionarPalestrasSePossivel(outraSessaoDaTarde, listaDePalestras);
 		
@@ -30,8 +30,7 @@ public class Agenda {
 		Trilha trilha1 = new Trilha(nomeDaTrilha, umaSessaoDaManha, umaSessaoDaTarde);
 		nomeDaTrilha = "DiGiTal";
 		Trilha trilha2 = new Trilha(nomeDaTrilha, outraSessaoDaManha, outraSessaoDaTarde);
-		return asList(trilha1, trilha2);
-				
+		return asList(trilha1, trilha2);	
 	}
 	
 	private void adicionarPalestrasSePossivel(Sessao sessao, ListaDePalestras palestras){
