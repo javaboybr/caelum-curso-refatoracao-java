@@ -34,6 +34,8 @@ public class TempoDeDuracao implements Comparable<TempoDeDuracao>{
 		return tempoEmMinutos.compareTo(outro.tempoEmMinutos);
 	}
 	
+	//3 - exemplo de introduzir variável explicativa - criar variáveis para
+	// as comparações abaixo
 	public boolean entre(TempoDeDuracao duracaominima,
 			TempoDeDuracao duracaomaxima) {
 		return duracaominima.compareTo(this) <= 0 && this.compareTo(duracaomaxima) <= 0;
