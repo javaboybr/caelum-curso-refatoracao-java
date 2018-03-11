@@ -27,11 +27,11 @@ public abstract class Sessao implements Iterable<Palestra>{
 		return palestras.removerTodas();
 	}
 	
+	//3 - Introduzir variável explicativa - outro exemplo
 	private boolean podeAdicionar(Palestra novaPalestra){
 		TempoDeDuracao tempoAcumulado = tempoTotalDasPalestras().mais(novaPalestra.lerTempoDeDuracao());
-		boolean tempoFuturoOk = tempoAcumulado.menorQue(lerTempoDeDuracao())|| tempoAcumulado.equals(lerTempoDeDuracao());
-		boolean palestraMenorQueUmaSessao = novaPalestra.comDuracaoMenorQue(lerTempoDeDuracao());
-		return tempoFuturoOk && palestraMenorQueUmaSessao;
+		return tempoAcumulado.menorQue(lerTempoDeDuracao()) || tempoAcumulado.equals(lerTempoDeDuracao()) 
+				&& novaPalestra.comDuracaoMenorQue(lerTempoDeDuracao());
 	}
 	
 	protected TempoDeDuracao tempoTotalDasPalestras() {
