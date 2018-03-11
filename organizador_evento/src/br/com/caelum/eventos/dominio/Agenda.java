@@ -13,8 +13,6 @@ public class Agenda {
 	}
 	
 	public List<Trilha> prepararTrilhas() {
-		final String nomeDaTrilha1 = "PaPo ReTo";
-		final String nomeDaTrilha2 = "DiGiTal";
 		SessaoDaManha umaSessaoDaManha = new SessaoDaManha();
 		SessaoDaManha outraSessaoDaManha = new SessaoDaManha();
 		
@@ -27,8 +25,13 @@ public class Agenda {
 		adicionarPalestrasSePossivel(umaSessaoDaTarde, listaDePalestras);
 		adicionarPalestrasSePossivel(outraSessaoDaTarde, listaDePalestras);
 		
-		return asList(new Trilha(nomeDaTrilha1, umaSessaoDaManha, umaSessaoDaTarde), 
-				new Trilha(nomeDaTrilha2, outraSessaoDaManha, outraSessaoDaTarde));
+		//6 - dividir variável temporária - criar 2 variáveis String
+		String nomeDaTrilha = "PaPo ReTo";
+		Trilha trilha1 = new Trilha(nomeDaTrilha, umaSessaoDaManha, umaSessaoDaTarde);
+		nomeDaTrilha = "DiGiTal";
+		Trilha trilha2 = new Trilha(nomeDaTrilha, outraSessaoDaManha, outraSessaoDaTarde);
+		return asList(trilha1, trilha2);
+				
 	}
 	
 	private void adicionarPalestrasSePossivel(Sessao sessao, ListaDePalestras palestras){
