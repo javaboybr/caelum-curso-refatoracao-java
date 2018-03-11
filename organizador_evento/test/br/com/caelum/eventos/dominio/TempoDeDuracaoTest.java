@@ -9,8 +9,6 @@ import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
-import br.com.caelum.eventos.dominio.TempoDeDuracao;
-
 public class TempoDeDuracaoTest {
 	
 	@Test
@@ -20,15 +18,6 @@ public class TempoDeDuracaoTest {
 		
 		assertTrue(umaDuracao.menorQue(outraDuracao));
 		assertFalse(outraDuracao.menorQue(umaDuracao));
-	}
-	
-	@Test
-	public void somarUmInteiro(){
-		TempoDeDuracao tempo = new TempoDeDuracao(10);
-		TempoDeDuracao tempoMaisUm = tempo.mais(1);
-		
-		TempoDeDuracao tempoEsperado = new TempoDeDuracao(11);
-		assertThat(tempoMaisUm, is(equalTo(tempoEsperado)));
 	}
 	
 	@Test

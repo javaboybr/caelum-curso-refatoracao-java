@@ -6,19 +6,15 @@ import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
-import br.com.caelum.eventos.dominio.Palestra;
-import br.com.caelum.eventos.dominio.Sessao;
-import br.com.caelum.eventos.dominio.SessaoDaManha;
-import br.com.caelum.eventos.dominio.SessaoDaTarde;
-import br.com.caelum.eventos.dominio.TempoDeDuracao;
-
 public class SessaoTest {
+	
+	private final TempoDeDuracao UM_MINUTO = new TempoDeDuracao(1);
 	
 	@Test
 	public void umaPalestraNaoPodeSerMaisLongaQueUmaSessaoDaManha(){
 		Sessao sessao = new SessaoDaManha();
 		TempoDeDuracao tempoDeDuracaoDaSessao = sessao.lerTempoDeDuracao();
-		Palestra palestra = new Palestra("nome qualquer", tempoDeDuracaoDaSessao.mais(1));
+		Palestra palestra = new Palestra("nome qualquer", tempoDeDuracaoDaSessao.mais(UM_MINUTO));
 		
 		assertFalse(sessao.adicionar(palestra));
 	}
@@ -27,7 +23,7 @@ public class SessaoTest {
 	public void umaPalestraNaoPodeSerMaisLongaQueUmaSessaoDaTarde(){
 		Sessao sessao = new SessaoDaTarde();
 		TempoDeDuracao tempoDeDuracaoDaSessao = sessao.lerTempoDeDuracao();
-		Palestra palestra = new Palestra("nome qualquer", tempoDeDuracaoDaSessao.mais(1));
+		Palestra palestra = new Palestra("nome qualquer", tempoDeDuracaoDaSessao.mais(UM_MINUTO));
 		
 		assertFalse(sessao.adicionar(palestra));
 	}

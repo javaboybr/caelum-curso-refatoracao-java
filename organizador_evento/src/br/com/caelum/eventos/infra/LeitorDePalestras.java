@@ -31,7 +31,7 @@ public class LeitorDePalestras {
 		return new ListaDePalestras(ret);
 	}
 
-	// 2 - exemplo de inline method 
+	// 2 - exemplo de inline method - deve-se retornar o seu conteúdo ao local onde ele é chamado.
 	private Palestra lerPalestra(Scanner scanner) {
 		String linha = scanner.nextLine();
 		return lerPalestra(linha);
@@ -44,7 +44,9 @@ public class LeitorDePalestras {
 		String nome = linha.substring(0, indiceDaDivisaoEntreNomeETempo);
 		//5 - substituir variável temporária por consulta - criar método que retorne o nome da palestra
 		String tempoString = linha.substring(indiceDaDivisaoEntreNomeETempo + 1, linha.length() - 3);
-		TempoDeDuracao duracao = LIGHTING_STRING.contains(tempoString) ? TempoDeDuracao.LIGHTING : new TempoDeDuracao(Integer.valueOf(tempoString));
+		TempoDeDuracao duracao = LIGHTING_STRING.contains(tempoString) 
+				? TempoDeDuracao.LIGHTING 
+				: new TempoDeDuracao(Integer.valueOf(tempoString));
 		
 		return new Palestra(nome, duracao);
 	}
