@@ -10,6 +10,8 @@ public class ISBN {
 		this.isbn = isbn;
 	}
 
+	// 8 - substituir método por objeto método: aqui pode ser aplicada essa técnica de refatoração 
+	// para criar um validador de ISBN.
 	private boolean validar(String isbn) {
 		if (isbn == null) return false;
 		

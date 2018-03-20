@@ -15,6 +15,8 @@ public class Livros {
 				.collect(Collectors.toList());
 	}
 	
+	//9 - substituir algoritmo: é possível utilizar for e outros recursos para tornar o código "bagunçado" e 
+	// exemplificar essa técnica de refatoração.
 	public Money lerSubtotal() {
 		return livros.stream()
 				.map(Livro::lerValor)
