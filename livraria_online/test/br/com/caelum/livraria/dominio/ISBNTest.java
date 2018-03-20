@@ -1,10 +1,14 @@
-package br.com.caelum.livraria;
+package br.com.caelum.livraria.dominio;
 
 import org.junit.Test;
 
 public class ISBNTest {
 	
-	//978-85-7307-610-3
+	// É o ISBN do livro Design Patterns,
+	// da Gang of Four (GoF)!
+	private static final String stringIsbnValido = "978-85-7307-610-3";
+	public static final ISBN umIsbnValido = new ISBN(stringIsbnValido);
+	public static final ISBN outroIsbnValido = new ISBN("978-85-363-0638-4");
 	
 	@Test(expected=IllegalArgumentException.class)
 	public void invalidarISBNNulo() {
@@ -19,10 +23,7 @@ public class ISBNTest {
 	
 	@Test
 	public void validarISBN() {
-		String isbnValido = "978-85-7307-610-3"; // É o ISBN do livro Design Patterns,
-												// da Gang of Four (GoF)!
-		
-		new ISBN(isbnValido);
+		new ISBN(stringIsbnValido);
 		// se não lançou exceção, o objeto foi criado com sucesso.
 	}
 }

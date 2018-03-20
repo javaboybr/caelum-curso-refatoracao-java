@@ -1,4 +1,4 @@
-package br.com.caelum.livraria;
+package br.com.caelum.livraria.dominio;
 
 public class ISBN {
 
