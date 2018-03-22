@@ -1,23 +1,23 @@
 package br.com.caelum.livraria.dominio;
 
-import java.math.BigDecimal;
+import org.javamoney.moneta.Money;
 
 public class Desconto {
 
-	private final BigDecimal porcentagem;
+	private final Money subtotal;
+	private final TipoDeDesconto tipo;
 	
-	public static final Desconto NENHUM = new Desconto();
-	
-	private Desconto() {
-		this(BigDecimal.ZERO);
+	public static final Desconto NENHUM = 
+			new Desconto(Money.of(0, Livraria.reais), TipoDeDesconto.NENHUM);
+
+	public Desconto(Money subtotal, TipoDeDesconto tipo) {
+		this.subtotal = subtotal;
+		this.tipo = tipo;
 	}
 
-	public Desconto(BigDecimal porcentagem) {
-		this.porcentagem = porcentagem;
-	}
-
-	public BigDecimal lerValor() {
-		return porcentagem;
+	// 10 - mover método: preprarar código que necessite dessa refatoração.
+	public Money lerValor() {
+		return tipo.calcularBaseadoEm(subtotal);
 	}
 
 }

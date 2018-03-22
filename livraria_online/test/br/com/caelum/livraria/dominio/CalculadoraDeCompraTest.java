@@ -1,34 +1,32 @@
 package br.com.caelum.livraria.dominio;
 
-import static java.math.BigDecimal.ONE;
-import static java.math.BigDecimal.TEN;
-import static java.math.BigDecimal.ZERO;
+import static br.com.caelum.livraria.dominio.CalculadoraDeCompra.calcularValorTotal;
+import static br.com.caelum.livraria.dominio.Livraria.reais;
+import static br.com.caelum.livraria.dominio.TipoDeDesconto.CUPOM_DE_DESCONTO;
+import static br.com.caelum.livraria.dominio.TipoDeDesconto.NENHUM;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
-
-import java.math.BigDecimal;
 
 import org.javamoney.moneta.Money;
 import org.junit.Test;
 
 public class CalculadoraDeCompraTest {
 	
+	private final Money subtotal = Money.of(100, reais);
+	private final Money frete = Money.of(1, reais);
+	
 	@Test
 	public void calcularValorDaCompraComFreteESemDesconto() {
-		Money valorObtido = CalculadoraDeCompra.calcularValorTotal(quantiaDe(TEN), quantiaDe(ONE), new Desconto(ZERO));
+		Money valorObtido = calcularValorTotal(subtotal, frete, new Desconto(subtotal, NENHUM));
 		
-		assertThat(valorObtido, is(equalTo(quantiaDe(new BigDecimal("11.00")))));
+		assertThat(valorObtido, is(equalTo(Money.of(101, reais))));
 	}
 	
 	@Test
 	public void calcularValorDaCompraComFreteEDesconto() {
-		Money valorObtido = CalculadoraDeCompra.calcularValorTotal(quantiaDe(TEN), quantiaDe(ONE), new Desconto(TEN));
+		Money valorObtido = calcularValorTotal(subtotal, frete, new Desconto(subtotal, CUPOM_DE_DESCONTO));
 		
-		assertThat(valorObtido, is(equalTo(quantiaDe(TEN))));
-	}
-	
-	private Money quantiaDe(BigDecimal quantia) {
-		return Money.of(quantia, Livraria.reais);
+		assertThat(valorObtido, is(equalTo(Money.of(96, reais))));
 	}
 }

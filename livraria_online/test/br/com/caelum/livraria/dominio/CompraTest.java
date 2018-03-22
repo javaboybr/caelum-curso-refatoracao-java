@@ -3,7 +3,7 @@ package br.com.caelum.livraria.dominio;
 import static br.com.caelum.livraria.dominio.ISBNTest.outroIsbnValido;
 import static br.com.caelum.livraria.dominio.ISBNTest.umIsbnValido;
 import static br.com.caelum.livraria.dominio.Livraria.reais;
-import static java.math.BigDecimal.valueOf;
+import static br.com.caelum.livraria.dominio.TipoDeDesconto.CUPOM_DE_DESCONTO;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
@@ -34,8 +34,8 @@ public class CompraTest {
 		Money valorFrete = Money.of(1, reais);
 		
 		Compra compra = new Compra(livrosSelecionados, valorFrete);
-		compra.incluirDesconto(new Desconto(valueOf(50)));
+		compra.incluirDesconto(new Desconto(livrosSelecionados.lerSubtotal(), CUPOM_DE_DESCONTO));
 		
-		assertThat(compra.lerValorTotal(), is(equalTo(Money.of(11, reais))));
+		assertThat(compra.lerValorTotal(), is(equalTo(Money.of(16, reais))));
 	}
 }
