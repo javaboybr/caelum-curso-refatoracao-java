@@ -2,11 +2,13 @@
 <classpath>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="src" path="test"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-9">
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8">
 		<attributes>
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry exported="true" kind="lib" path="lib/junit-4.12.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/hamcrest-all-1.3.jar" sourcepath="/Users/rodrigovieirapinto/.m2/repository/org/hamcrest/hamcrest-all/1.3/hamcrest-all-1.3-sources.jar"/>
 	<classpathentry kind="lib" path="lib/moneta-1.1.jar">
 		<attributes>
 			<attribute name="module" value="true"/>
@@ -18,6 +20,6 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="lib" path="lib/javax.annotation-api-1.3.2.jar"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
+	<classpathentry kind="lib" path="lib/mockito-all-1.10.19.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

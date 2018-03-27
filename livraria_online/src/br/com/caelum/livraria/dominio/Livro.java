@@ -19,4 +19,8 @@ public class Livro {
 	public Money lerValor() {
 		return valor;
 	}
+	
+	public String lerNome() {
+		return nome;
+	} 
 }

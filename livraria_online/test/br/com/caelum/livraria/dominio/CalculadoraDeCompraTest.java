@@ -29,4 +29,11 @@ public class CalculadoraDeCompraTest {
 		
 		assertThat(valorObtido, is(equalTo(Money.of(96, reais))));
 	}
+	
+	@Test
+	public void calcularValorDaCompraComSubtotalIgualAZero() {
+		Money valorObtido = calcularValorTotal(Money.of(0, reais), frete, new Desconto(subtotal, CUPOM_DE_DESCONTO));
+		
+		assertThat(valorObtido, is(equalTo(Money.of(0, reais))));
+	}
 }
