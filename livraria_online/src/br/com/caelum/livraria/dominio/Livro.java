@@ -24,6 +24,9 @@ public class Livro {
 		return valor;
 	}
 	
+	//15 - remover intermediário: para demonstrar essa refatoração, será criada uma classe que
+	// realizará apenas a formatação desse valor monetário e a formatação de cep do cliente. Uma
+	// espécie de FormatadorUtils.
 	public String lerValorFormatado() {
 		return MonetaryFormats
 				.getAmountFormat(AmountFormatQueryBuilder

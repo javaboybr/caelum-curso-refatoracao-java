@@ -32,6 +32,10 @@ public class Cliente {
 		return cep;
 	}
 	
+	public String lerCepFormatado() {
+		return String.format("%05d-%03d", Long.valueOf(cep) / 1000, Long.valueOf(cep) % 1000);
+	}
+	
 	public String lerTelefone() {
 		return telefone.toString();
 	}

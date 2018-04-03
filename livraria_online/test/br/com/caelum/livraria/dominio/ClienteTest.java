@@ -26,4 +26,9 @@ public class ClienteTest {
 	public void lerTelefoneFormatado() {
 		assertThat(umCliente.lerTelefone(), is(equalTo("(11) 55555555")));
 	}
+	
+	@Test
+	public void lerCepFormatado() {
+		assertThat(umCliente.lerCepFormatado(), is(equalTo("03297-060")));
+	}
 }
