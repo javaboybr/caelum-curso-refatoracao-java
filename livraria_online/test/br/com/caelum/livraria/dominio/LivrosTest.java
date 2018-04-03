@@ -1,8 +1,8 @@
 package br.com.caelum.livraria.dominio;
 
-import static br.com.caelum.livraria.dominio.ISBNTest.outroIsbnValido;
-import static br.com.caelum.livraria.dominio.ISBNTest.umIsbnValido;
 import static br.com.caelum.livraria.dominio.Livraria.reais;
+import static br.com.caelum.livraria.dominio.LivroTest.outroLivro;
+import static br.com.caelum.livraria.dominio.LivroTest.umLivro;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.Matchers.contains;
@@ -14,11 +14,7 @@ import org.junit.Test;
 public class LivrosTest {
 	
 	private Livros livros;
-	
-	private final Livro umLivro = new Livro("um livro", umIsbnValido, Money.of(5, reais), "descricao");
-	private final Livro outroLivro = new Livro("outro livro", outroIsbnValido, Money.of(5, reais), "descricao");
-
-	
+		
 	@Test
 	public void lerSubtotalDeColecaoVaziaDeLivros() {
 		this.livros = new Livros();
@@ -30,7 +26,7 @@ public class LivrosTest {
 	public void lerSubTotalDeColecaoComDiversosLivros() {
 		this.livros = new Livros(umLivro, outroLivro);
 		
-		assertThat(livros.lerSubtotal(), is(equalTo(Money.of(10, reais))));
+		assertThat(livros.lerSubtotal(), is(equalTo(Money.of(20, reais))));
 	}
 	
 	@Test

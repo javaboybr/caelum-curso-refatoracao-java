@@ -15,11 +15,8 @@ import org.junit.Test;
 
 public class CarrinhoDeComprasTest {
 	
-	private final String descricao = "descricao";
-	
 	@Test
 	public void calcularValorTotalComFreteSemDescontoParaCompraEnvolvendoApenasUmLivro() {
-		
 		Money valorFrete = Money.of(1, reais);
 		
 		CarrinhoDeCompras carrinho = new CarrinhoDeCompras(umCliente, umLivro, valorFrete);
