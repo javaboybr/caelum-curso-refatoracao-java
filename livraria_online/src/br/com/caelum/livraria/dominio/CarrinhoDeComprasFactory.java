@@ -19,13 +19,15 @@ public class CarrinhoDeComprasFactory implements Iterable<CarrinhoDeCompras> {
 	public Iterator<CarrinhoDeCompras> iterator() {
 		return carrinhos.iterator();
 	}
-
+ 
 	public CarrinhoDeCompras obterCarrinho(final Cliente idCliente, Livro livro, Money valorFrete) {
 		CarrinhoDeCompras ret = new CarrinhoDeCompras(idCliente, livro, valorFrete);
 		if(carrinhos.contains(ret)) {
 			ret = carrinhos.stream()
 					.filter(carrinho -> carrinho.doCliente(idCliente))
 					.findFirst().orElse(null);
+			//14 - Ocultar delegação. Nesse ponto, quando o código for bagunçado, será usado um
+			// getLivros().adicionar(livro)
 			if(ret != null)ret.adicionar(livro);
 		}
 		else carrinhos.add(ret);

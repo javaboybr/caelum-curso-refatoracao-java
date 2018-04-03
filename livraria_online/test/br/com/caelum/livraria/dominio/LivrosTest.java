@@ -15,8 +15,8 @@ public class LivrosTest {
 	
 	private Livros livros;
 	
-	private final Livro umLivro = new Livro("um livro", umIsbnValido, Money.of(5, Livraria.reais));
-	private final Livro outroLivro = new Livro("outro livro", outroIsbnValido, Money.of(5, Livraria.reais));
+	private final Livro umLivro = new Livro("um livro", umIsbnValido, Money.of(5, reais), "descricao");
+	private final Livro outroLivro = new Livro("outro livro", outroIsbnValido, Money.of(5, reais), "descricao");
 
 	
 	@Test

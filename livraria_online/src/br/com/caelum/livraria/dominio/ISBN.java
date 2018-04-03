@@ -2,12 +2,12 @@ package br.com.caelum.livraria.dominio;
 
 public class ISBN {
 
-	private final String isbn;
+	private final String numero;
 
 	public ISBN(String isbn) {
 		if(!validar(isbn)) 
 			throw new IllegalArgumentException(String.format("ISBN inválido: %s", isbn));
-		this.isbn = isbn;
+		this.numero = isbn;
 	}
 
 	// 8 - substituir método por objeto método: aqui pode ser aplicada essa técnica de refatoração 
@@ -35,5 +35,10 @@ public class ISBN {
 		catch (NumberFormatException nfe){
 			return false;
 		}
+	}
+	
+	@Override
+	public String toString() {
+		return numero;
 	}
 }

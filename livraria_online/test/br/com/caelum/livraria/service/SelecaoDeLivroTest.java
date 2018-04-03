@@ -28,7 +28,7 @@ public class SelecaoDeLivroTest {
 	private SelecaoDeLivro servico;
 	private CalculadoraFrete calculadoraFrete; 
 	private CarrinhoDeComprasFactory todosCarrinhosDeCompras;
-	private final Livro livroSelecionado = new Livro("nome", umIsbnValido, Money.of(100, reais));
+	private final Livro livroSelecionado = new Livro("nome", umIsbnValido, Money.of(100, reais), "descricao");
 	
 	@Before
 	public void setUp() {
@@ -43,7 +43,7 @@ public class SelecaoDeLivroTest {
 	
 	@Test
 	public void criarUmCarrinhoDeComprasComUmLivro() {
-		CarrinhoDeCompras carrinho = servico.adicionarLivro(umIsbnValido, umCliente);
+		CarrinhoDeCompras carrinho = servico.adicionarLivroNoCarrinhoDoCliente(umIsbnValido, umCliente);
 		
 		assertThat(carrinho.doCliente(umCliente), is(true));
 		assertThat(carrinho, contains(livroSelecionado));
@@ -51,11 +51,11 @@ public class SelecaoDeLivroTest {
 	
 	@Test
 	public void adicionarLivroEmCarrinhoDeComprasExistente() {
-		Livro outroLivroSelecionado = new Livro("nome", outroIsbnValido, Money.of(50, reais));
+		Livro outroLivroSelecionado = new Livro("nome", outroIsbnValido, Money.of(50, reais), "descricao");
 		when(todosLivros.por(outroIsbnValido)).thenReturn(outroLivroSelecionado);
 		
-		servico.adicionarLivro(umIsbnValido, umCliente);
-		CarrinhoDeCompras carrinho = servico.adicionarLivro(outroIsbnValido, umCliente);
+		servico.adicionarLivroNoCarrinhoDoCliente(umIsbnValido, umCliente);
+		CarrinhoDeCompras carrinho = servico.adicionarLivroNoCarrinhoDoCliente(outroIsbnValido, umCliente);
 		
 		assertThat(carrinho.doCliente(umCliente), is(true));
 		assertThat(carrinho, hasItems(livroSelecionado, outroLivroSelecionado));

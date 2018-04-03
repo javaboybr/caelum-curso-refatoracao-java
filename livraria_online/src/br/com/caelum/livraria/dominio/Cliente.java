@@ -5,10 +5,12 @@ public class Cliente {
 
 	private final String id;
 	private final String cep;
+	private final Telefone telefone;
 	
-	public Cliente(String id, String cep) {
+	public Cliente(String id, String cep, Telefone telefone) {
 		this.id = id;
 		this.cep = cep;
+		this.telefone = telefone;
 	}
 
 	@Override
@@ -28,5 +30,9 @@ public class Cliente {
 
 	public String lerCep() {
 		return cep;
+	}
+	
+	public String lerTelefone() {
+		return telefone.toString();
 	}
 }

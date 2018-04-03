@@ -18,7 +18,7 @@ import br.com.caelum.livraria.dominio.Livro;
 public class CarrinhoDeComprasFactoryTest {
 	
 	private CarrinhoDeComprasFactory factory;
-	private final Livro umLivro = new Livro("nome", umIsbnValido, Money.of(100, reais));
+	private final Livro umLivro = new Livro("nome", umIsbnValido, Money.of(100, reais), "descricao");
 	private final Money valorFrete = Money.of(10, reais);
 	
 	@Before

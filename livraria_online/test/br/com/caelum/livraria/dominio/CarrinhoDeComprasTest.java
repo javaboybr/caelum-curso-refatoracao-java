@@ -2,9 +2,9 @@ package br.com.caelum.livraria.dominio;
 
 import static br.com.caelum.livraria.dominio.ClienteTest.outroCliente;
 import static br.com.caelum.livraria.dominio.ClienteTest.umCliente;
-import static br.com.caelum.livraria.dominio.ISBNTest.outroIsbnValido;
-import static br.com.caelum.livraria.dominio.ISBNTest.umIsbnValido;
 import static br.com.caelum.livraria.dominio.Livraria.reais;
+import static br.com.caelum.livraria.dominio.LivroTest.outroLivro;
+import static br.com.caelum.livraria.dominio.LivroTest.umLivro;
 import static br.com.caelum.livraria.dominio.TipoDeDesconto.CUPOM_DE_DESCONTO;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.is;
@@ -15,10 +15,11 @@ import org.junit.Test;
 
 public class CarrinhoDeComprasTest {
 	
+	private final String descricao = "descricao";
+	
 	@Test
 	public void calcularValorTotalComFreteSemDescontoParaCompraEnvolvendoApenasUmLivro() {
-		Money valorDoLivro = Money.of(10, reais);
-		Livro umLivro = new Livro("nome do livro", umIsbnValido, valorDoLivro);
+		
 		Money valorFrete = Money.of(1, reais);
 		
 		CarrinhoDeCompras carrinho = new CarrinhoDeCompras(umCliente, umLivro, valorFrete);
@@ -28,9 +29,6 @@ public class CarrinhoDeComprasTest {
 	
 	@Test
 	public void calcularValorTotalComFreteComDescontoParaComprasEnvolvendoDoisLivros() {
-		Money valorDoLivro = Money.of(10, reais);
-		Livro umLivro = new Livro("um livro", umIsbnValido, valorDoLivro);
-		Livro outroLivro = new Livro("outro nome do livro", outroIsbnValido, valorDoLivro);
 		Livros livrosSelecionados = new Livros(umLivro, outroLivro);
 		Money valorFrete = Money.of(1, reais);
 		
@@ -42,8 +40,7 @@ public class CarrinhoDeComprasTest {
 	}
 	
 	@Test
-	public void umCarrinhoFoiCriadoPeloClienteComIdentificacaoPassadaComoParametro() {
-		Livro umLivro = new Livro("nome do livro", umIsbnValido, Money.of(10, reais));
+	public void verificarSeCarrinhoPertenceOuNaoADeterminadosClientes() {
 		CarrinhoDeCompras carrinho = new CarrinhoDeCompras(umCliente, umLivro, Money.of(1, reais));
 		
 		assertThat(carrinho.doCliente(umCliente), is(true));

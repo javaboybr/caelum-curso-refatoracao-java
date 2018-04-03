@@ -6,13 +6,13 @@ import org.javamoney.moneta.Money;
 
 public class CarrinhoDeCompras implements Iterable<Livro> {
 	
-	private final Cliente idCliente;
+	private final Cliente cliente;
 	private final Money valorFrete;
 	private final Livros livros;
 	private Desconto desconto;
 	
-	public CarrinhoDeCompras(Cliente idCliente, Livro livro, Money valorFrete) {
-		this.idCliente = idCliente;
+	public CarrinhoDeCompras(Cliente cliente, Livro livro, Money valorFrete) {
+		this.cliente = cliente;
 		this.livros = new Livros(livro);
 		this.valorFrete = valorFrete;
 		this.desconto = Desconto.NENHUM;
@@ -27,7 +27,7 @@ public class CarrinhoDeCompras implements Iterable<Livro> {
 	}
 
 	public boolean doCliente(Cliente idCliente) {
-		return this.idCliente.equals(idCliente);
+		return this.cliente.equals(idCliente);
 	}
 	
 	@Override
@@ -35,14 +35,14 @@ public class CarrinhoDeCompras implements Iterable<Livro> {
 		boolean ret = false;
 		if(obj instanceof CarrinhoDeCompras) {
 			CarrinhoDeCompras outro = (CarrinhoDeCompras)obj;
-			ret = idCliente.equals(outro.idCliente);
+			ret = cliente.equals(outro.cliente);
 		}
 		return ret;
 	}
 	
 	@Override
 	public int hashCode() {
-		return idCliente.hashCode();
+		return cliente.hashCode();
 	}
 
 	@Override
