@@ -1,21 +1,24 @@
 package br.com.caelum.livraria.dominio;
 
+import static javax.money.format.AmountFormatQueryBuilder.of;
+import static org.javamoney.moneta.format.CurrencyStyle.SYMBOL;
+
 import java.util.Locale;
 
-import javax.money.format.AmountFormatQueryBuilder;
 import javax.money.format.MonetaryFormats;
 
 import org.javamoney.moneta.Money;
-import org.javamoney.moneta.format.CurrencyStyle;
 
 public class Livro {
 	
 	private final String nome;
+	private final Autor autor;
 	private final ISBN isbn;
 	private final Money valor;
 	
-	public Livro(String nome, ISBN isbn, Money valor) {
+	public Livro(String nome, Autor autor, ISBN isbn, Money valor) {
 		this.nome = nome;
+		this.autor = autor;
 		this.isbn = isbn;
 		this.valor = valor;
 	}
@@ -29,8 +32,7 @@ public class Livro {
 	// espécie de FormatadorUtils.
 	public String lerValorFormatado() {
 		return MonetaryFormats
-				.getAmountFormat(AmountFormatQueryBuilder
-						.of(Locale.getDefault()).set(CurrencyStyle.SYMBOL).build()).format(valor);
+				.getAmountFormat(of(Locale.getDefault()).set(SYMBOL).build()).format(valor);
 	}
 	
 	public String lerNome() {
@@ -39,5 +41,9 @@ public class Livro {
 	
 	public String lerISBN() {
 		return isbn.toString();
+	}
+	
+	public String lerAutor() {
+		return autor.toString();
 	}
 }

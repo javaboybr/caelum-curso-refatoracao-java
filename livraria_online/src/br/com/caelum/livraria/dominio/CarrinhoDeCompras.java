@@ -1,5 +1,10 @@
 package br.com.caelum.livraria.dominio;
 
+import static java.time.DayOfWeek.SATURDAY;
+import static java.time.DayOfWeek.SUNDAY;
+import static java.util.Arrays.asList;
+
+import java.time.LocalDate;
 import java.util.Iterator;
 
 import org.javamoney.moneta.Money;
@@ -10,16 +15,35 @@ public class CarrinhoDeCompras implements Iterable<Livro> {
 	private final Money valorFrete;
 	private final Livros livros;
 	private Desconto desconto;
+	private final LocalDate dataDaCompra;
 	
-	public CarrinhoDeCompras(Cliente cliente, Livro livro, Money valorFrete) {
+	private static final int DIAS_PARA_ENTREGA = 5;
+	
+	public CarrinhoDeCompras(Cliente cliente, Livro livro, Money valorFrete, LocalDate dataDaCompra) {
 		this.cliente = cliente;
 		this.livros = new Livros(livro);
 		this.valorFrete = valorFrete;
 		this.desconto = Desconto.NENHUM;
+		this.dataDaCompra = dataDaCompra;
 	}
 
 	public Money lerValorTotal() {
 		return CalculadoraDeCompra.calcularValorTotal(livros.lerSubtotal(), valorFrete, desconto);
+	}
+	
+	public LocalDate lerDataDeEntrega() {
+		return calcularDiaDeEntrega(DIAS_PARA_ENTREGA);
+	}
+	
+	private LocalDate calcularDiaDeEntrega(int diasParaEntrega) {
+		LocalDate ret = dataDaCompra.plusDays(diasParaEntrega);
+		if(ehFimDeSemana(ret)) return calcularDiaDeEntrega(diasParaEntrega + 1);
+		return ret;
+	}
+
+	//16 - Intoduzir método externo - o método abaixo será criado para exemplificar essa refatoração.
+	private boolean ehFimDeSemana(LocalDate data) {
+		return asList(SATURDAY, SUNDAY).contains(data.getDayOfWeek()); 
 	}
 
 	public void incluirDesconto(Desconto desconto) {

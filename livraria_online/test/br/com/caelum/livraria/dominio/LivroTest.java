@@ -1,5 +1,6 @@
 package br.com.caelum.livraria.dominio;
 
+import static br.com.caelum.livraria.dominio.AutorTest.umAutor;
 import static br.com.caelum.livraria.dominio.ISBNTest.outroIsbnValido;
 import static br.com.caelum.livraria.dominio.ISBNTest.umIsbnValido;
 import static br.com.caelum.livraria.dominio.Livraria.reais;
@@ -13,8 +14,8 @@ import org.junit.Test;
 public class LivroTest {
 	
 	private static final Money valorDoLivro = Money.of(10, reais);
-	public static final Livro umLivro = new Livro("nome do livro", umIsbnValido, valorDoLivro);
-	public static final Livro outroLivro = new Livro("outro nome do livro", outroIsbnValido, valorDoLivro);
+	public static final Livro umLivro = new Livro("nome do livro", umAutor, umIsbnValido, valorDoLivro);
+	public static final Livro outroLivro = new Livro("outro nome do livro", umAutor, outroIsbnValido, valorDoLivro);
 	
 	@Test
 	public void lerValorFormatado() {
@@ -29,5 +30,10 @@ public class LivroTest {
 	@Test
 	public void lerISBN() {
 		assertThat(umLivro.lerISBN(), is(equalTo(umIsbnValido.toString())));
+	}
+	
+	@Test
+	public void lerAutor() {
+		assertThat(umLivro.lerAutor(), is(equalTo(umAutor.toString())));
 	}
 }

@@ -1,5 +1,7 @@
 package br.com.caelum.livraria.dominio;
 
+import static java.time.LocalDate.now;
+
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
@@ -21,7 +23,7 @@ public class CarrinhoDeComprasFactory implements Iterable<CarrinhoDeCompras> {
 	}
  
 	public CarrinhoDeCompras obterCarrinho(final Cliente idCliente, Livro livro, Money valorFrete) {
-		CarrinhoDeCompras ret = new CarrinhoDeCompras(idCliente, livro, valorFrete);
+		CarrinhoDeCompras ret = new CarrinhoDeCompras(idCliente, livro, valorFrete, now());
 		if(carrinhos.contains(ret)) {
 			ret = carrinhos.stream()
 					.filter(carrinho -> carrinho.doCliente(idCliente))
