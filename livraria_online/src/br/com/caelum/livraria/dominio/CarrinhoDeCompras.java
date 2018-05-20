@@ -16,6 +16,7 @@ public class CarrinhoDeCompras implements Iterable<Livro> {
 	private final Livros livros;
 	private Desconto desconto;
 	private final LocalDate dataDaCompra;
+	private final CalculadoraDeCompra calculadora;
 	
 	private static final int DIAS_PARA_ENTREGA = 5;
 	
@@ -25,10 +26,11 @@ public class CarrinhoDeCompras implements Iterable<Livro> {
 		this.valorFrete = valorFrete;
 		this.desconto = Desconto.NENHUM;
 		this.dataDaCompra = dataDaCompra;
+		this.calculadora = new CalculadoraDeCompra();
 	}
 
 	public Money lerValorTotal() {
-		return CalculadoraDeCompra.calcularValorTotal(livros.lerSubtotal(), valorFrete, desconto);
+		return calculadora.calcularValorTotal(livros.lerSubtotal(), valorFrete, desconto);
 	}
 	
 	public LocalDate lerDataDeEntrega() {
