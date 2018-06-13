@@ -13,15 +13,15 @@ public class Autor {
 		this.nome = nome;
 	}
 
-	public String lerUltimoSobrenome() {
-		List<String> nomes = lerTrechosDoNome();
+	public String getUltimoSobrenome() {
+		List<String> nomes = getTrechosDoNome();
 		return capitalize(nomes.get(nomes.size() - 1));
 	}
 	
 	@Override
 	public String toString() {
 		StringBuilder ret = new StringBuilder();
-		lerTrechosDoNome().stream().forEach(parteDoNome -> {
+		getTrechosDoNome().stream().forEach(parteDoNome -> {
 			ret.append(capitalize(parteDoNome));
 			ret.append(" ");
 		});
@@ -32,7 +32,7 @@ public class Autor {
 		return Character.toUpperCase(nome.charAt(0)) + nome.substring(1).toLowerCase();
 	}
 
-	private List<String> lerTrechosDoNome() {
+	private List<String> getTrechosDoNome() {
 		return Arrays.asList(nome.split(" "));
 	}
 }

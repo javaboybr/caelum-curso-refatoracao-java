@@ -19,14 +19,14 @@ public class LivrosTest {
 	public void lerSubtotalDeColecaoVaziaDeLivros() {
 		this.livros = new Livros();
 		
-		assertThat(livros.lerSubtotal(), is(equalTo(Money.of(0, reais))));
+		assertThat(livros.getSubtotal(), is(equalTo(Money.of(0, reais))));
 	}
 	
 	@Test
 	public void lerSubTotalDeColecaoComDiversosLivros() {
 		this.livros = new Livros(umLivro, outroLivro);
 		
-		assertThat(livros.lerSubtotal(), is(equalTo(Money.of(20, reais))));
+		assertThat(livros.getSubtotal(), is(equalTo(Money.of(20, reais))));
 	}
 	
 	@Test

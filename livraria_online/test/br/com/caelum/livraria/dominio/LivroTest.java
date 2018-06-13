@@ -18,22 +18,22 @@ public class LivroTest {
 	public static final Livro outroLivro = new Livro("outro nome do livro", umAutor, outroIsbnValido, valorDoLivro);
 	
 	@Test
-	public void lerValorFormatado() {
-		assertThat(umLivro.lerValorFormatado(), is(equalTo("R$10,00")));
+	public void livroDeveRetornarSeuValorFormatado() {
+		assertThat(umLivro.getValorFormatado(), is(equalTo("R$10,00")));
 	}
 	
 	@Test
-	public void lerNome() {
-		assertThat(umLivro.lerNome(), is(equalTo("nome do livro")));
+	public void livroDeveRetornarSeuNomeSemFormatacao() {
+		assertThat(umLivro.getNome(), is(equalTo("nome do livro")));
 	}
 	
 	@Test
-	public void lerISBN() {
-		assertThat(umLivro.lerISBN(), is(equalTo(umIsbnValido.toString())));
+	public void livroDeveRetornarSeuISBNFormatadoEComoString() {
+		assertThat(umLivro.getISBN(), is(equalTo(umIsbnValido.toString())));
 	}
 	
 	@Test
-	public void lerAutor() {
-		assertThat(umLivro.lerAutor(), is(equalTo(umAutor.toString())));
+	public void livroDeveRetornarONomeDeSeuAutorFormatado() {
+		assertThat(umLivro.getAutor(), is(equalTo(umAutor.toString())));
 	}
 }

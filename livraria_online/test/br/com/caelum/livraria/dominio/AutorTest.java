@@ -15,12 +15,12 @@ public class AutorTest {
 	
 	@Test
 	public void lerUltimoSobrenomeDeUmAutorComApenasONome() {
-		assertThat(autorComSomenteONome.lerUltimoSobrenome(), is(equalTo("Rodrigo")));
+		assertThat(autorComSomenteONome.getUltimoSobrenome(), is(equalTo("Rodrigo")));
 	}
 	
 	@Test
 	public void lerUltimoSobrenomeDeUmAutorComNomeEUmSobrenome() {
-		assertThat(autorComNomeESobrenome.lerUltimoSobrenome(), is(equalTo("Fernandes")));
+		assertThat(autorComNomeESobrenome.getUltimoSobrenome(), is(equalTo("Fernandes")));
 	}
 	
 	@Test

@@ -28,15 +28,15 @@ public class Cliente {
 		return id.hashCode();
 	}
 
-	public String lerCep() {
+	public String getCep() {
 		return cep;
 	}
 	
-	public String lerCepFormatado() {
+	public String getCepFormatado() {
 		return String.format("%05d-%03d", Long.valueOf(cep) / 1000, Long.valueOf(cep) % 1000);
 	}
 	
-	public String lerTelefone() {
+	public String getTelefone() {
 		return telefone.toString();
 	}
 }

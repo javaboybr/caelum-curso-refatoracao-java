@@ -17,7 +17,7 @@ public class Desconto {
 
 	// 10 - mover método: preparar código que necessite dessa refatoração. 
 	// Para isso, usar IFs para realizar o cálculo, de acordo com o enum usado.
-	public Money lerValor() {
+	public Money getValor() {
 		return tipo.calcularBaseadoEm(subtotal);
 	}
 

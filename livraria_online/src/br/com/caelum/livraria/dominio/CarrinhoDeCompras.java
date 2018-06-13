@@ -29,11 +29,11 @@ public class CarrinhoDeCompras implements Iterable<Livro> {
 		this.calculadora = new CalculadoraDeCompra();
 	}
 
-	public Money lerValorTotal() {
-		return calculadora.calcularValorTotal(livros.lerSubtotal(), valorFrete, desconto);
+	public Money getValorTotal() {
+		return calculadora.calcularValorTotal(livros.getSubtotal(), valorFrete, desconto);
 	}
 	
-	public LocalDate lerDataDeEntrega() {
+	public LocalDate getDataDeEntrega() {
 		return calcularDiaDeEntrega(DIAS_PARA_ENTREGA);
 	}
 	

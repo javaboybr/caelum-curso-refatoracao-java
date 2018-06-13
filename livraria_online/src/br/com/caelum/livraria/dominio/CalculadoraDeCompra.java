@@ -8,7 +8,7 @@ public class CalculadoraDeCompra {
 	public Money calcularValorTotal(Money subtotal, Money valorDoFrete, Desconto desconto) {
 		Money valorTotal = subtotal;
 		if(valorTotal.isZero()) return valorTotal;
-		valorTotal = valorTotal.subtract(desconto.lerValor());
+		valorTotal = valorTotal.subtract(desconto.getValor());
 		valorTotal = valorTotal.add(valorDoFrete);
 		return valorTotal;
 	}

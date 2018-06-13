@@ -18,9 +18,9 @@ public class Livros implements Iterable<Livro> {
 	
 	//9 - substituir algoritmo: é possível utilizar for e outros recursos para tornar o código "bagunçado" e 
 	// exemplificar essa técnica de refatoração.
-	public Money lerSubtotal() {
+	public Money getSubtotal() {
 		return lista.stream()
-				.map(Livro::lerValor)
+				.map(Livro::getValor)
 				.reduce(Money.of(0, Livraria.reais), Money::add);
 	}
 

@@ -24,7 +24,7 @@ public class SelecaoDeLivro {
 
 	public CarrinhoDeCompras adicionarLivroNoCarrinhoDoCliente(ISBN isbn, Cliente cliente) {
 		Livro livro = todosLivros.por(isbn);
-		Money valorFrete = calculadoraFrete.baseadoEm(cliente.lerCep());
+		Money valorFrete = calculadoraFrete.baseadoEm(cliente.getCep());
 		return factory.obterCarrinho(cliente, livro, valorFrete);
 	}
 }

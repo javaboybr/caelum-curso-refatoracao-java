@@ -23,27 +23,27 @@ public class Livro {
 		this.valor = valor;
 	}
 	
-	public Money lerValor() {
+	public Money getValor() {
 		return valor;
 	}
 	
 	//15 - remover intermediário: para demonstrar essa refatoração, será criada uma classe que
 	// realizará apenas a formatação desse valor monetário e a formatação de cep do cliente. Uma
 	// espécie de FormatadorUtils.
-	public String lerValorFormatado() {
+	public String getValorFormatado() {
 		return MonetaryFormats
 				.getAmountFormat(of(Locale.getDefault()).set(SYMBOL).build()).format(valor);
 	}
 	
-	public String lerNome() {
+	public String getNome() {
 		return nome;
 	}
 	
-	public String lerISBN() {
+	public String getISBN() {
 		return isbn.toString();
 	}
 	
-	public String lerAutor() {
+	public String getAutor() {
 		return autor.toString();
 	}
 }
