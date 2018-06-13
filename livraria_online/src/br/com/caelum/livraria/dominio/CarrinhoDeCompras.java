@@ -38,9 +38,9 @@ public class CarrinhoDeCompras implements Iterable<Livro> {
 	}
 	
 	private LocalDate calcularDiaDeEntrega(int diasParaEntrega) {
-		LocalDate ret = dataDaCompra.plusDays(diasParaEntrega);
-		if(ehFimDeSemana(ret)) return calcularDiaDeEntrega(diasParaEntrega + 1);
-		return ret;
+		LocalDate dataCalculada = dataDaCompra.plusDays(diasParaEntrega);
+		if(ehFimDeSemana(dataCalculada)) return calcularDiaDeEntrega(diasParaEntrega + 1);
+		return dataCalculada;
 	}
 
 	//16 - Intoduzir método externo - o método abaixo será criado para exemplificar essa refatoração.
@@ -58,12 +58,12 @@ public class CarrinhoDeCompras implements Iterable<Livro> {
 	
 	@Override
 	public boolean equals(Object obj) {
-		boolean ret = false;
+		boolean iguais = false;
 		if(obj instanceof CarrinhoDeCompras) {
 			CarrinhoDeCompras outro = (CarrinhoDeCompras)obj;
-			ret = cliente.equals(outro.cliente);
+			iguais = cliente.equals(outro.cliente);
 		}
-		return ret;
+		return iguais;
 	}
 	
 	@Override

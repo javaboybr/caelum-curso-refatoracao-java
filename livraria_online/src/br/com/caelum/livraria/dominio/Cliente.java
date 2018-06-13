@@ -15,12 +15,12 @@ public class Cliente {
 
 	@Override
 	public boolean equals(Object obj) {
-		boolean ret = false;
+		boolean iguais = false;
 		if(obj instanceof Cliente) {
 			Cliente outra = (Cliente) obj;
-			ret = id.equals(outra.id);
+			iguais = id.equals(outra.id);
 		}
-		return ret;
+		return iguais;
 	}
 	
 	@Override
