@@ -3,8 +3,8 @@ package br.com.caelum.livraria.service;
 import static br.com.caelum.livraria.dominio.ISBNTest.outroIsbnValido;
 import static br.com.caelum.livraria.dominio.ISBNTest.umIsbnValido;
 import static br.com.caelum.livraria.dominio.Livraria.reais;
-import static br.com.caelum.livraria.dominio.LivroTest.outroLivro;
-import static br.com.caelum.livraria.dominio.LivroTest.umLivro;
+import static br.com.caelum.livraria.dominio.LivroTest.OUTRO_LIVRO;
+import static br.com.caelum.livraria.dominio.LivroTest.UM_LIVRO;
 import static br.com.caelum.livraria.dominio.ObjetosParaTestes.UM_CLIENTE;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.Matchers.contains;
@@ -33,7 +33,7 @@ public class SelecaoDeLivroTest {
 	@Before
 	public void setUp() {
 		this.todosLivros = mock(TodosLivros.class);
-		when(todosLivros.por(umIsbnValido)).thenReturn(umLivro);
+		when(todosLivros.por(umIsbnValido)).thenReturn(UM_LIVRO);
 		
 		this.todosCarrinhosDeCompras = new CarrinhoDeComprasFactory();
 		this.calculadoraFrete = mock(CalculadoraFrete.class);
@@ -46,17 +46,17 @@ public class SelecaoDeLivroTest {
 		CarrinhoDeCompras carrinho = servico.adicionarLivroNoCarrinhoDoCliente(umIsbnValido, UM_CLIENTE);
 		
 		assertThat(carrinho.doCliente(UM_CLIENTE), is(true));
-		assertThat(carrinho, contains(umLivro));
+		assertThat(carrinho, contains(UM_LIVRO));
 	}
 	
 	@Test
 	public void adicionarLivroEmCarrinhoDeComprasExistente() {
-		when(todosLivros.por(outroIsbnValido)).thenReturn(outroLivro);
+		when(todosLivros.por(outroIsbnValido)).thenReturn(OUTRO_LIVRO);
 		
 		servico.adicionarLivroNoCarrinhoDoCliente(umIsbnValido, UM_CLIENTE);
 		CarrinhoDeCompras carrinho = servico.adicionarLivroNoCarrinhoDoCliente(outroIsbnValido, UM_CLIENTE);
 		
 		assertThat(carrinho.doCliente(UM_CLIENTE), is(true));
-		assertThat(carrinho, hasItems(umLivro, outroLivro));
+		assertThat(carrinho, hasItems(UM_LIVRO, OUTRO_LIVRO));
 	}
 }

@@ -8,8 +8,6 @@ import org.junit.Test;
 
 public class AutorTest {
 	
-	public static final Autor umAutor = new Autor("Rodrigo Vieira");
-	
 	private final Autor autorComSomenteONome = new Autor("rOdRiGo");
 	private final Autor autorComNomeESobrenome = new Autor("rOdRiGo fErNaNdEs");
 	
