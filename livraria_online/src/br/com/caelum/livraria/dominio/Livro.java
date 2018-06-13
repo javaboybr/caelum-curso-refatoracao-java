@@ -44,6 +44,6 @@ public class Livro {
 	}
 	
 	public String getAutor() {
-		return autor.toString();
+		return autor.getNomeFormatado();
 	}
 }

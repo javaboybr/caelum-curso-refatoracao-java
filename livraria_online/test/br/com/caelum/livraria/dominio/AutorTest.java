@@ -23,11 +23,11 @@ public class AutorTest {
 	
 	@Test
 	public void toStringDeveRetornarAPrimeiraLetraDeCadaParteDoNomeComoMaiusculaNoCasoDeUmAutorComApenasONome() {
-		assertThat(autorComSomenteONome.toString(), is(equalTo("Rodrigo")));
+		assertThat(autorComSomenteONome.getNomeFormatado(), is(equalTo("Rodrigo")));
 	}
 	
 	@Test
 	public void toStringDeveRetornarAPrimeiraLetraDeCadaParteDoNomeComoMaiusculaNoCasoDeUmAutorComNomeESobrenome() {
-		assertThat(autorComNomeESobrenome.toString(), is(equalTo("Rodrigo Fernandes")));
+		assertThat(autorComNomeESobrenome.getNomeFormatado(), is(equalTo("Rodrigo Fernandes")));
 	}
 }

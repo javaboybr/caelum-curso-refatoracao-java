@@ -34,6 +34,6 @@ public class LivroTest {
 	
 	@Test
 	public void livroDeveRetornarONomeDeSeuAutorFormatado() {
-		assertThat(UM_LIVRO.getAutor(), is(equalTo(umAutor.toString())));
+		assertThat(UM_LIVRO.getAutor(), is(equalTo(umAutor.getNomeFormatado())));
 	}
 }

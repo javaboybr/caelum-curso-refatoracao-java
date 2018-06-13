@@ -18,8 +18,7 @@ public class Autor {
 		return capitalize(nomes.get(nomes.size() - 1));
 	}
 	
-	@Override
-	public String toString() {
+	public String getNomeFormatado() {
 		StringBuilder ret = new StringBuilder();
 		getTrechosDoNome().stream().forEach(parteDoNome -> {
 			ret.append(capitalize(parteDoNome));
