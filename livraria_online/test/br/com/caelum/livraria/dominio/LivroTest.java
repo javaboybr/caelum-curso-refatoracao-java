@@ -34,6 +34,11 @@ public class LivroTest {
 	
 	@Test
 	public void livroDeveRetornarONomeDeSeuAutorFormatado() {
-		assertThat(UM_LIVRO.getAutor(), is(equalTo(umAutor.getNomeFormatado())));
+		assertThat(UM_LIVRO.getAutor(), is(equalTo("Rodrigo Vieira")));
+	}
+	
+	@Test
+	public void livroDeveRetornarOUltimoNomeDeSeuAutorFormatado() {
+		assertThat(UM_LIVRO.getUltimoSobrenomeDoAutor(), is(equalTo("Vieira")));
 	}
 }
