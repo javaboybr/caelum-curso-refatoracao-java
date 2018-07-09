@@ -38,9 +38,9 @@ public class SelecaoDeLivro {
 			carrinho = carrinhos.stream()
 					.filter(umCarrinho -> umCarrinho.doCliente(cliente))
 					.findFirst().orElse(null);
-			//14 - Ocultar delegação. Nesse ponto, quando o código for bagunçado, será usado um
-			// getLivros().adicionar(livro)
-			if(carrinho != null)carrinho.adicionar(livro);
+			//14 - Ocultar delegação. Nesse ponto, quando o código for refatorado, será acrescentado um
+			//adicionar(livro) à classe Carrinho, e removido o método getLivros() dessa mesma classe.
+			if(carrinho != null)carrinho.getLivros().adicionar(livro);
 		}
 		else carrinhos.add(carrinho);
 		return carrinho;

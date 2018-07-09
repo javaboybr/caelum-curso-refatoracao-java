@@ -1,12 +1,5 @@
 package br.com.caelum.livraria.dominio;
 
-import static javax.money.format.AmountFormatQueryBuilder.of;
-import static org.javamoney.moneta.format.CurrencyStyle.SYMBOL;
-
-import java.util.Locale;
-
-import javax.money.format.MonetaryFormats;
-
 import org.javamoney.moneta.Money;
 
 public class Livro {
@@ -27,12 +20,11 @@ public class Livro {
 		return valor;
 	}
 	
-	//15 - remover intermediário: para demonstrar essa refatoração, será criada uma classe que
-	// realizará apenas a formatação desse valor monetário e a formatação de cep do cliente. Uma
-	// espécie de FormatadorUtils.
+	//15 - remover intermediário: o código contido em FormatadorUtils.getValorFormatado deve retornar 
+	// para esse método. Deve-se remover, portanto, a classe FormatadorUtils e seu teste durante a
+	// refatoração.
 	public String getValorFormatado() {
-		return MonetaryFormats
-				.getAmountFormat(of(Locale.getDefault()).set(SYMBOL).build()).format(valor);
+		return FormatadorUtils.getValorFormatado(valor);
 	}
 	
 	public String getNome() {

@@ -32,7 +32,7 @@ public class CarrinhoDeComprasTest {
 		Money valorFrete = Money.of(1, reais);
 		
 		CarrinhoDeCompras carrinho = new CarrinhoDeCompras(UM_CLIENTE, UM_LIVRO, valorFrete, now());
-		carrinho.adicionar(OUTRO_LIVRO);
+		carrinho.getLivros().adicionar(OUTRO_LIVRO);
 		carrinho.incluirDesconto(new Desconto(livrosSelecionados.getSubtotal(), CUPOM_DE_DESCONTO));
 		
 		assertThat(carrinho.getValorTotal(), is(equalTo(Money.of(16, reais))));
