@@ -39,13 +39,10 @@ public class CarrinhoDeCompras implements Iterable<Livro> {
 	
 	private LocalDate calcularDiaDeEntrega(int diasParaEntrega) {
 		LocalDate dataCalculada = dataDaCompra.plusDays(diasParaEntrega);
-		if(ehFimDeSemana(dataCalculada)) return calcularDiaDeEntrega(diasParaEntrega + 1);
+		//16 - Introduzir método externo - será criado um método que verifique se a data de entrega calculada
+		// é um fim de semana
+		if(asList(SATURDAY, SUNDAY).contains(dataCalculada.getDayOfWeek())) return calcularDiaDeEntrega(diasParaEntrega + 1);
 		return dataCalculada;
-	}
-
-	//16 - Intoduzir método externo - o método abaixo será criado para exemplificar essa refatoração.
-	private boolean ehFimDeSemana(LocalDate data) {
-		return asList(SATURDAY, SUNDAY).contains(data.getDayOfWeek()); 
 	}
 
 	public void incluirDesconto(Desconto desconto) {
