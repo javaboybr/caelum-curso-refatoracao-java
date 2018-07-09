@@ -22,9 +22,9 @@ public class SelecaoDeLivro {
 		this.factory = factory;
 	}
 
-	public CarrinhoDeCompras adicionarLivroNoCarrinhoDoCliente(ISBN isbn, Cliente cliente) {
+	public CarrinhoDeCompras adicionarLivroNoCarrinhoDoCliente(ISBN isbn, Cliente cliente, String cep) {
 		Livro livro = todosLivros.por(isbn);
-		Money valorFrete = calculadoraFrete.baseadoEm(cliente.getCep());
+		Money valorFrete = calculadoraFrete.baseadoEm(cep);
 		return factory.obterCarrinho(cliente, livro, valorFrete);
 	}
 }

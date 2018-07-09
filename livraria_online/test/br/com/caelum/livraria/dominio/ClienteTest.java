@@ -1,9 +1,8 @@
 package br.com.caelum.livraria.dominio;
 
-import static br.com.caelum.livraria.dominio.ObjetosParaTestes.UM_TELEFONE;
-import static br.com.caelum.livraria.dominio.ObjetosParaTestes.CEP;
 import static br.com.caelum.livraria.dominio.ObjetosParaTestes.ID_CLIENTE;
 import static br.com.caelum.livraria.dominio.ObjetosParaTestes.UM_CLIENTE;
+import static br.com.caelum.livraria.dominio.ObjetosParaTestes.UM_TELEFONE;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
@@ -14,7 +13,7 @@ public class ClienteTest {
 
 	@Test
 	public void igualdade() {
-		Cliente outroCliente = new Cliente(ID_CLIENTE, CEP, UM_TELEFONE);
+		Cliente outroCliente = new Cliente(ID_CLIENTE, UM_TELEFONE);
 		
 		assertThat(UM_CLIENTE, is(equalTo(outroCliente)));
 		assertThat(UM_CLIENTE.hashCode(), is(equalTo(outroCliente.hashCode())));
@@ -23,10 +22,5 @@ public class ClienteTest {
 	@Test
 	public void lerTelefoneFormatado() {
 		assertThat(UM_CLIENTE.getTelefone(), is(equalTo("(11) 55555555")));
-	}
-	
-	@Test
-	public void lerCepFormatado() {
-		assertThat(UM_CLIENTE.getCepFormatado(), is(equalTo("03297-060")));
 	}
 }
