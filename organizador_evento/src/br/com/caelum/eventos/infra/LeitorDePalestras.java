@@ -43,7 +43,7 @@ public class LeitorDePalestras {
 		
 		//5 - substituir variável temporária por consulta - criar método que retorne o nome da palestra
 		String nome = linha.substring(0, indiceDaDivisaoEntreNomeETempo);
-		//5 - substituir variável temporária por consulta - criar método que retorne o nome da palestra
+		//5 - substituir variável temporária por consulta - criar método que retorne o tempo total da palestra
 		String tempoString = linha.substring(indiceDaDivisaoEntreNomeETempo + 1, linha.length() - 3);
 		TempoDeDuracao duracao = LIGHTING_STRING.contains(tempoString) 
 				? TempoDeDuracao.LIGHTING 
