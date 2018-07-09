@@ -26,6 +26,8 @@ public class Agenda {
 		adicionarPalestrasSePossivel(outraSessaoDaTarde, listaDePalestras);
 		
 		//6 - dividir variável temporária - criar 2 variáveis String
+		// a variável 'nomeDaTrilha' está recebendo mais de uma atribuição, o que indica que ela pode
+		// estar com responsabilidades demais. Daí a aplicação dessa técnica de refatoração.
 		String nomeDaTrilha = "PaPo ReTo";
 		Trilha trilha1 = new Trilha(nomeDaTrilha, umaSessaoDaManha, umaSessaoDaTarde);
 		nomeDaTrilha = "DiGiTal";
