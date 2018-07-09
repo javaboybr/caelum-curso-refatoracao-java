@@ -21,25 +21,22 @@ import org.junit.Test;
 
 import br.com.caelum.livraria.dominio.CalculadoraFrete;
 import br.com.caelum.livraria.dominio.CarrinhoDeCompras;
-import br.com.caelum.livraria.dominio.CarrinhoDeComprasFactory;
 import br.com.caelum.livraria.dominio.TodosLivros;
 
 public class SelecaoDeLivroTest {
 	
 	private TodosLivros todosLivros;
 	private SelecaoDeLivro servico;
-	private CalculadoraFrete calculadoraFrete; 
-	private CarrinhoDeComprasFactory todosCarrinhosDeCompras;
+	private CalculadoraFrete calculadoraFrete;
 	
 	@Before
 	public void setUp() {
 		this.todosLivros = mock(TodosLivros.class);
 		when(todosLivros.por(umIsbnValido)).thenReturn(UM_LIVRO);
 		
-		this.todosCarrinhosDeCompras = new CarrinhoDeComprasFactory();
 		this.calculadoraFrete = mock(CalculadoraFrete.class);
 		when(calculadoraFrete.baseadoEm(anyString())).thenReturn(Money.of(5, reais));
-		this.servico = new SelecaoDeLivro(todosLivros, calculadoraFrete, todosCarrinhosDeCompras);
+		this.servico = new SelecaoDeLivro(todosLivros, calculadoraFrete);
 	}
 	
 	@Test

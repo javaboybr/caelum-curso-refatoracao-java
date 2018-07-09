@@ -1,10 +1,14 @@
 package br.com.caelum.livraria.service;
 
+import static java.time.LocalDate.now;
+
+import java.util.HashSet;
+import java.util.Set;
+
 import org.javamoney.moneta.Money;
 
 import br.com.caelum.livraria.dominio.CalculadoraFrete;
 import br.com.caelum.livraria.dominio.CarrinhoDeCompras;
-import br.com.caelum.livraria.dominio.CarrinhoDeComprasFactory;
 import br.com.caelum.livraria.dominio.Cliente;
 import br.com.caelum.livraria.dominio.ISBN;
 import br.com.caelum.livraria.dominio.Livro;
@@ -13,18 +17,32 @@ import br.com.caelum.livraria.dominio.TodosLivros;
 public class SelecaoDeLivro {
 	
 	private final TodosLivros todosLivros;
-	private final CarrinhoDeComprasFactory factory;
 	private final CalculadoraFrete calculadoraFrete;
+	private final Set<CarrinhoDeCompras> carrinhos;
 	
-	public SelecaoDeLivro(TodosLivros todosLivros, CalculadoraFrete calculadoraFrete, CarrinhoDeComprasFactory factory) {
+	
+	public SelecaoDeLivro(TodosLivros todosLivros, CalculadoraFrete calculadoraFrete) {
 		this.todosLivros = todosLivros;
 		this.calculadoraFrete = calculadoraFrete;
-		this.factory = factory;
+		this.carrinhos = new HashSet<>();
 	}
 
 	public CarrinhoDeCompras adicionarLivroNoCarrinhoDoCliente(ISBN isbn, Cliente cliente, String cep) {
 		Livro livro = todosLivros.por(isbn);
 		Money valorFrete = calculadoraFrete.baseadoEm(cep);
-		return factory.obterCarrinho(cliente, livro, valorFrete);
+		
+		//12 - extrair classe: criar o CarrinhoDeComprasFactory, que terá a lógica abaixo, bem
+		// como a collection de carrinhos de compras.
+		CarrinhoDeCompras carrinho = new CarrinhoDeCompras(cliente, livro, valorFrete, now());
+		if(carrinhos.contains(carrinho)) {
+			carrinho = carrinhos.stream()
+					.filter(umCarrinho -> umCarrinho.doCliente(cliente))
+					.findFirst().orElse(null);
+			//14 - Ocultar delegação. Nesse ponto, quando o código for bagunçado, será usado um
+			// getLivros().adicionar(livro)
+			if(carrinho != null)carrinho.adicionar(livro);
+		}
+		else carrinhos.add(carrinho);
+		return carrinho;
 	}
 }
