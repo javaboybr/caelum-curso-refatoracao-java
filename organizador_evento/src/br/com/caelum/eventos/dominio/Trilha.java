@@ -17,7 +17,7 @@ public class Trilha {
 		this.nome = nome;
 		atividadesAgendadas = new ArrayList<>();
 
-		//1 - exemplo de extract method
+		//1 - exemplo de extract method - aplicar essa técnica aqui e no trecho de código abaixo.
 		LocalTime horarioCalculado = sessaoDaManha.comecaAs();
 		for(Palestra palestra : sessaoDaManha){
 			palestra.agendarPara(horarioCalculado);
