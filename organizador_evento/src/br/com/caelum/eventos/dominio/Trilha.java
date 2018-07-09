@@ -26,12 +26,14 @@ public class Trilha {
 		}
 		agendarAlmoco();
 		
-		//1 - exemplo de extract method
+		//1 - extract method, após aplicar internalizar variável temporária (sugerido por Fowler) - 
 		horarioCalculado = sessaoDaTarde.comecaAs();
 		for(Palestra palestra : sessaoDaTarde){
 			palestra.agendarPara(horarioCalculado);
 			atividadesAgendadas.add(palestra);
-			horarioCalculado = horarioCalculado.plusMinutes(palestra.lerTempoDeDuracao().toInt());
+			// 4 - internalizar variável temporária
+			int tempoDeDuracaoEmMinutos = palestra.lerTempoDeDuracao().toInt();
+			horarioCalculado = horarioCalculado.plusMinutes(tempoDeDuracaoEmMinutos);
 		}
 		agendarNetworking();
 	}
