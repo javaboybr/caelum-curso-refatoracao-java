@@ -32,6 +32,7 @@ public class LeitorDePalestras {
 	}
 
 	// 2 - exemplo de inline method - deve-se retornar o seu conteúdo ao local onde ele é chamado.
+	// Esse método é chamado uma única vez, além de ser uma indireção desnecessária. Logo, essa técnica pode ser aplicada aqui.
 	private Palestra lerPalestra(Scanner scanner) {
 		String linha = scanner.nextLine();
 		return lerPalestra(linha);
