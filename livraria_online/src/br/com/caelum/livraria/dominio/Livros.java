@@ -16,12 +16,14 @@ public class Livros implements Iterable<Livro> {
 				.collect(Collectors.toList());
 	}
 	
-	//9 - substituir algoritmo: é possível utilizar for e outros recursos para tornar o código "bagunçado" e 
-	// exemplificar essa técnica de refatoração.
-	public Money getSubtotal() {
-		return lista.stream()
-				.map(Livro::getValor)
-				.reduce(Money.of(0, Livraria.reais), Money::add);
+	//9 - substituir algoritmo: aplicar aqui essa técnica de refatoração.
+	public Money getSubtotal() {		
+		Money subTotal = Money.of(0, Livraria.reais);
+		for(Livro livro : lista) {
+			Money valorDoLivro = livro.getValor();
+			subTotal = subTotal.add(valorDoLivro);
+		}
+		return subTotal;
 	}
 
 	@Override
